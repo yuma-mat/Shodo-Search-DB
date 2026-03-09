@@ -114,16 +114,15 @@
       overflow-x: auto;
     }
     table {
-      width: min(100%, 860px);
-      margin: 0 auto;
+      width: 100%;
       border-collapse: collapse;
       background: #fff;
       border-radius: 10px;
-      table-layout: fixed;
+      table-layout: auto;
     }
     th, td {
       border-bottom: 1px solid var(--line);
-      padding: 10px 8px;
+      padding: 10px 10px;
       text-align: left;
       vertical-align: middle;
       font-size: 15px;
@@ -137,7 +136,6 @@
     tr:last-child td { border-bottom: none; }
     td.char {
       font-size: 42px;
-      width: 110px;
     }
     .char-image {
       width: 96px;
@@ -147,8 +145,29 @@
       border-radius: 6px;
       background: #fff;
     }
+    .image-col {
+      text-align: center;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .image-cell {
+      text-align: center;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .char-col,
+    .char-cell,
+    .style-col,
+    .style-cell,
+    .id-col,
+    .id-cell {
+      text-align: center;
+    }
     .zoom-col {
-      width: 120px;
+      text-align: center;
+    }
+    .zoom-cell {
+      text-align: center;
     }
     .zoom-btn {
       width: auto;
@@ -307,12 +326,19 @@
       <p id="count" class="count"></p>
       <div class="table-wrap">
         <table aria-label="検索結果">
+          <colgroup>
+            <col style="width:22%">
+            <col style="width:16%">
+            <col style="width:18%">
+            <col style="width:26%">
+            <col style="width:18%">
+          </colgroup>
           <thead>
             <tr>
-              <th>画像</th>
-              <th>文字</th>
-              <th>書体</th>
-              <th>手本ID</th>
+              <th class="image-col">画像</th>
+              <th class="char-col">文字</th>
+              <th class="style-col">書体</th>
+              <th class="id-col">手本ID</th>
               <th class="zoom-col">拡大</th>
             </tr>
           </thead>
@@ -414,11 +440,11 @@
           ? `<img class="char-image" src="${row.imagePath}" alt="${row.char}の手本画像" loading="lazy">`
           : `<span class="img-missing">画像なし</span>`;
         tr.innerHTML = `
-          <td>${imageCell}</td>
-          <td class="char">${row.char}</td>
-          <td>${row.style}</td>
-          <td>${row.sheetId ?? ""}</td>
-          <td><button class="zoom-btn" data-index="${index}">拡大</button></td>
+          <td class="image-cell">${imageCell}</td>
+          <td class="char char-cell">${row.char}</td>
+          <td class="style-cell">${row.style}</td>
+          <td class="id-cell">${row.sheetId ?? ""}</td>
+          <td class="zoom-cell"><button class="zoom-btn" data-index="${index}">拡大</button></td>
         `;
         resultBody.append(tr);
       }
