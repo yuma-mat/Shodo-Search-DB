@@ -24,6 +24,7 @@ import argparse
 import json
 from dataclasses import dataclass, asdict
 from pathlib import Path
+from copy import deepcopy
 
 import cv2
 import fitz  # PyMuPDF
@@ -75,6 +76,8 @@ class Editor:
         self.drag_box_start: Box | None = None
         self.drag_box_idx: int | None = None
 
+        self._load_existing_json_if_any()
+
     def render_page(self, page_idx: int) -> np.ndarray:
         if page_idx in self.cache:
             return self.cache[page_idx]
@@ -101,10 +104,10 @@ class Editor:
         return boxes
 
     def current_boxes(self) -> list[Box]:
-        if self.page_idx not in self.boxes_by_page:
-            img = self.render_page(self.page_idx)
-            self.boxes_by_page[self.page_idx] = self.default_boxes(img)
-        return self.boxes_by_page[self.page_idx]
+        if self.page_idx in self.boxes_by_page:
+            return self.boxes_by_page[self.page_idx]
+        img = self.render_page(self.page_idx)
+        return self.default_boxes(img)
 
     def clamp_box(self, box: Box, img_w: int, img_h: int) -> Box:
         w = max(MIN_BOX_SIDE, min(box.w, img_w))
@@ -189,6 +192,10 @@ class Editor:
         if event == cv2.EVENT_LBUTTONDOWN:
             idx, mode, corner = self.hit_test(x, y)
             if idx is not None and mode is not None:
+                # First edit on this page: promote current view (default or loaded) to persisted boxes.
+                if self.page_idx not in self.boxes_by_page:
+                    self.boxes_by_page[self.page_idx] = deepcopy(boxes)
+                    boxes = self.boxes_by_page[self.page_idx]
                 self.selected = idx
                 self.drag_mode = mode
                 self.drag_corner = corner
@@ -251,12 +258,10 @@ class Editor:
             "pdf_path": str(self.pdf_path),
             "page_count": self.page_count,
             "boxes": {},
+            "edited_pages": sorted([p + 1 for p in self.boxes_by_page.keys()]),
         }
-        for p in range(self.page_count):
-            boxes = self.boxes_by_page.get(p)
-            if boxes is None:
-                img = self.render_page(p)
-                boxes = self.default_boxes(img)
+        for p in sorted(self.boxes_by_page.keys()):
+            boxes = self.boxes_by_page[p]
             img = self.render_page(p)
             h, w = img.shape[:2]
             page_boxes = []
@@ -271,6 +276,42 @@ class Editor:
         self.out_json.parent.mkdir(parents=True, exist_ok=True)
         self.out_json.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"Saved: {self.out_json}")
+
+    def _load_existing_json_if_any(self) -> None:
+        if not self.out_json.exists():
+            return
+        try:
+            payload = json.loads(self.out_json.read_text(encoding="utf-8"))
+        except Exception:
+            return
+        boxes_payload = payload.get("boxes")
+        if not isinstance(boxes_payload, dict):
+            return
+        for k, items in boxes_payload.items():
+            try:
+                page_idx = int(k) - 1
+            except Exception:
+                continue
+            if not (0 <= page_idx < self.page_count):
+                continue
+            if not isinstance(items, list):
+                continue
+            boxes: list[Box] = []
+            for it in items[:5]:
+                if not isinstance(it, dict):
+                    continue
+                try:
+                    x = int(round(float(it["x"])))
+                    y = int(round(float(it["y"])))
+                    w = int(round(float(it["w"])))
+                    h = int(round(float(it["h"])))
+                except Exception:
+                    continue
+                boxes.append(Box(x=x, y=y, w=w, h=h))
+            if len(boxes) == 5:
+                img = self.render_page(page_idx)
+                ih, iw = img.shape[:2]
+                self.boxes_by_page[page_idx] = [self.clamp_box(b, iw, ih) for b in boxes]
 
     def run(self) -> None:
         cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
@@ -313,6 +354,7 @@ def main() -> None:
     parser.add_argument("--pdf", required=True, help="Input PDF path")
     parser.add_argument("--out-json", default="data/manual_boxes.json", help="Output JSON path")
     parser.add_argument("--dpi", type=int, default=260, help="Render DPI for editing")
+    parser.add_argument("--start-page", type=int, default=1, help="Start page number (1-based)")
     args = parser.parse_args()
 
     pdf_path = Path(args.pdf).expanduser().resolve()
@@ -321,6 +363,9 @@ def main() -> None:
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
     editor = Editor(pdf_path=pdf_path, out_json=out_json, dpi=args.dpi)
+    if args.start_page < 1:
+        raise ValueError("--start-page must be >= 1")
+    editor.page_idx = min(editor.page_count - 1, args.start_page - 1)
     editor.run()
 
 

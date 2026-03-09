@@ -180,6 +180,15 @@ python3 scripts/manual_box_editor.py \
 - `s`: JSON保存
 - `q`: 保存して終了
 
+続きから再開する場合（例: 31ページ目から）:
+
+```bash
+python3 scripts/manual_box_editor.py \
+  --pdf "/Users/yuma/projects/opencv-test/assets/①楷書（五文字）.pdf" \
+  --out-json "data/manual_boxes.json" \
+  --start-page 31
+```
+
 ### 2) 調整済み枠で抽出
 
 ```bash
@@ -221,3 +230,9 @@ python3 scripts/csv_to_characters.py \
 - `pykakasi` が入っていれば `yomi` を自動補完します。
 - `yomi` を空許容にしたい場合は `--allow-empty-yomi` を指定します。
 - 複数読みを優先したい場合は `--readings-json "data/readings_map.example.json"` を指定します。
+
+GUIでCSV編集する場合:
+
+```bash
+python3 scripts/csv_gui_editor.py --csv "data/extracted_template_1_30_1.csv"
+```
