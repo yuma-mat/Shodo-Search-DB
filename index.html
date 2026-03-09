@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>桜データベース</title>
+  <style>
+    :root {
+      --bg: #fdeff5;
+      --panel: #fff8fc;
+      --ink: #1d2d55;
+      --sub: #5f6f99;
+      --accent: #2B4278;
+      --line: #e6c9d8;
+      --sakura: #f7c8d8;
+      --sakura-soft: #fff1f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      color: var(--ink);
+      background: linear-gradient(160deg, var(--sakura-soft), var(--bg));
+    }
+    .wrap {
+      max-width: 1240px;
+      margin: 24px auto;
+      padding: 0 16px 24px;
+    }
+    .title {
+      margin: 0 0 6px;
+      font-size: 36px;
+      letter-spacing: 0.02em;
+    }
+    .desc {
+      margin: 0 0 18px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .tab-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 700;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 10px 28px rgba(31, 27, 23, 0.06);
+    }
+    .tab-panel[hidden] { display: none; }
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    label {
+      font-size: 13px;
+      display: block;
+      margin-bottom: 6px;
+      color: var(--sub);
+    }
+    input, select, button {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      font-size: 16px;
+      font-family: inherit;
+      background: #fff;
+      color: var(--ink);
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+    }
+    .clear {
+      background: #e5a8c0;
+      color: var(--accent);
+    }
+    .count {
+      font-size: 14px;
+      margin: 10px 0;
+      color: var(--sub);
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+    table {
+      width: min(100%, 860px);
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      table-layout: fixed;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+    th {
+      background: #fbe7ef;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    tr:last-child td { border-bottom: none; }
+    td.char {
+      font-size: 42px;
+      width: 110px;
+    }
+    .char-image {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+    }
+    .zoom-col {
+      width: 120px;
+    }
+    .zoom-btn {
+      width: auto;
+      min-width: 86px;
+      padding: 8px 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+    }
+    .img-missing {
+      color: var(--sub);
+      font-size: 13px;
+    }
+    .empty {
+      margin: 8px 0 0;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    .tehon-controls {
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      gap: 10px;
+      margin-bottom: 12px;
+      align-items: end;
+    }
+    .tehon-help {
+      margin: 0 0 12px;
+      color: var(--sub);
+      font-size: 13px;
+    }
+    .tehon-status {
+      margin: 0 0 10px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    .paper-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+    }
+    .paper {
+      position: relative;
+      width: min(calc((100svh - 230px) * 24.3 / 33.4), 96vw);
+      aspect-ratio: 24.3 / 33.4;
+      border: 2px solid #caa0b8;
+      border-radius: 0;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .glyph {
+      position: absolute;
+      padding: 2.5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .glyph img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .glyph .fallback-char {
+      font-size: clamp(28px, 9vw, 58px);
+      color: var(--accent);
+    }
+    .zoom-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(43, 66, 120, 0.84);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 16px;
+    }
+    .zoom-modal[hidden] {
+      display: none;
+    }
+    .zoom-close {
+      width: auto;
+      min-width: 120px;
+      background: var(--sakura-soft);
+      color: var(--accent);
+    }
+    .zoom-view {
+      width: min(96vw, 1100px);
+      height: min(88vh, 1600px);
+      background: #ffffff;
+      border: 2px solid #d7b1c4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .zoom-view img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .zoom-char {
+      font-size: min(72vw, 72vh);
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .tehon-controls {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        grid-template-columns: 1fr;
+      }
+      .paper {
+        width: min(calc((100svh - 290px) * 24.3 / 33.4), 98vw);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="title">桜データベース</h1>
+    <p class="desc">文字の検索と手本レイアウト作成ができます。</p>
+
+    <div class="tabs" role="tablist" aria-label="機能タブ">
+      <button id="tabSearch" class="tab-btn active" role="tab" aria-selected="true" aria-controls="searchPanel">文字検索</button>
+      <button id="tabTehon" class="tab-btn" role="tab" aria-selected="false" aria-controls="tehonPanel">手本作成</button>
+    </div>
+
+    <section id="searchPanel" class="panel tab-panel" role="tabpanel">
+      <div class="filters">
+        <div>
+          <label for="charInput">文字</label>
+          <input id="charInput" type="text" maxlength="2" placeholder="1文字で入力">
+        </div>
+        <div>
+          <label for="yomiInput">読み</label>
+          <input id="yomiInput" type="text" placeholder="ひらがな・カタカナどちらでも可">
+        </div>
+        <div>
+          <label for="styleInput">書体</label>
+          <select id="styleInput">
+            <option value="">すべて</option>
+          </select>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="searchBtn">検索する</button>
+        <button id="clearBtn" class="clear">条件をクリア</button>
+      </div>
+      <p id="count" class="count"></p>
+      <div class="table-wrap">
+        <table aria-label="検索結果">
+          <thead>
+            <tr>
+              <th>画像</th>
+              <th>文字</th>
+              <th>書体</th>
+              <th>手本ID</th>
+              <th class="zoom-col">拡大</th>
+            </tr>
+          </thead>
+          <tbody id="resultBody"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="empty" hidden>該当する文字は見つかりませんでした。</p>
+    </section>
+
+    <section id="tehonPanel" class="panel tab-panel" role="tabpanel" hidden>
+      <div class="tehon-controls">
+        <div>
+          <label for="tehonInput">手本作成文字（1〜6文字）</label>
+          <input id="tehonInput" type="text" maxlength="12" placeholder="文字を入力">
+        </div>
+        <button id="tehonBtn">配置する</button>
+      </div>
+      <p id="tehonStatus" class="tehon-status">文字を入力して「配置する」を押してください。</p>
+      <div class="paper-wrap">
+        <div id="paper" class="paper" aria-label="半紙レイアウト"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="zoomModal" class="zoom-modal" hidden>
+    <button id="zoomCloseBtn" class="zoom-close">閉じる</button>
+    <div id="zoomView" class="zoom-view"></div>
+  </div>
+
+  <script src="./data/characters.js"></script>
+  <script>
+    const characters = Array.isArray(window.CHARACTERS) ? window.CHARACTERS : [];
+
+    const tabSearch = document.querySelector("#tabSearch");
+    const tabTehon = document.querySelector("#tabTehon");
+    const searchPanel = document.querySelector("#searchPanel");
+    const tehonPanel = document.querySelector("#tehonPanel");
+
+    const charInput = document.querySelector("#charInput");
+    const yomiInput = document.querySelector("#yomiInput");
+    const styleInput = document.querySelector("#styleInput");
+    const searchBtn = document.querySelector("#searchBtn");
+    const clearBtn = document.querySelector("#clearBtn");
+    const resultBody = document.querySelector("#resultBody");
+    const count = document.querySelector("#count");
+    const empty = document.querySelector("#empty");
+    const zoomModal = document.querySelector("#zoomModal");
+    const zoomCloseBtn = document.querySelector("#zoomCloseBtn");
+    const zoomView = document.querySelector("#zoomView");
+
+    const tehonInput = document.querySelector("#tehonInput");
+    const tehonBtn = document.querySelector("#tehonBtn");
+    const tehonStatus = document.querySelector("#tehonStatus");
+    const paper = document.querySelector("#paper");
+    let currentSearchRows = [];
+
+    const glyphMap = new Map();
+    for (const row of characters) {
+      if (!glyphMap.has(row.char)) {
+        glyphMap.set(row.char, row);
+      }
+    }
+
+    const toHiragana = (text) =>
+      text.replace(/[\u30a1-\u30f6]/g, (match) =>
+        String.fromCharCode(match.charCodeAt(0) - 0x60)
+      );
+
+    const switchTab = (tab) => {
+      const isSearch = tab === "search";
+      tabSearch.classList.toggle("active", isSearch);
+      tabTehon.classList.toggle("active", !isSearch);
+      tabSearch.setAttribute("aria-selected", String(isSearch));
+      tabTehon.setAttribute("aria-selected", String(!isSearch));
+      searchPanel.hidden = !isSearch;
+      tehonPanel.hidden = isSearch;
+    };
+
+    tabSearch.addEventListener("click", () => switchTab("search"));
+    tabTehon.addEventListener("click", () => switchTab("tehon"));
+
+    const styles = [...new Set(characters.map((c) => c.style))].sort();
+    for (const style of styles) {
+      const option = document.createElement("option");
+      option.value = style;
+      option.textContent = style;
+      styleInput.append(option);
+    }
+
+    const renderSearch = (rows, searched = false) => {
+      currentSearchRows = rows;
+      resultBody.innerHTML = "";
+      count.textContent = searched ? `検索結果: ${rows.length}件` : "";
+      empty.hidden = !searched || rows.length > 0;
+
+      for (const [index, row] of rows.entries()) {
+        const tr = document.createElement("tr");
+        const imageCell = row.imagePath
+          ? `<img class="char-image" src="${row.imagePath}" alt="${row.char}の手本画像" loading="lazy">`
+          : `<span class="img-missing">画像なし</span>`;
+        tr.innerHTML = `
+          <td>${imageCell}</td>
+          <td class="char">${row.char}</td>
+          <td>${row.style}</td>
+          <td>${row.sheetId ?? ""}</td>
+          <td><button class="zoom-btn" data-index="${index}">拡大</button></td>
+        `;
+        resultBody.append(tr);
+      }
+    };
+
+    const openZoom = (row) => {
+      zoomView.innerHTML = "";
+      if (row?.imagePath) {
+        const img = document.createElement("img");
+        img.src = row.imagePath;
+        img.alt = `${row.char}の拡大表示`;
+        zoomView.append(img);
+      } else {
+        const fallback = document.createElement("div");
+        fallback.className = "zoom-char";
+        fallback.textContent = row?.char ?? "";
+        zoomView.append(fallback);
+      }
+      zoomModal.hidden = false;
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeZoom = () => {
+      zoomModal.hidden = true;
+      zoomView.innerHTML = "";
+      document.body.style.overflow = "";
+    };
+
+    const search = () => {
+      const charQuery = charInput.value.trim();
+      const yomiQuery = toHiragana(yomiInput.value.trim());
+      const styleQuery = styleInput.value;
+
+      const filtered = characters.filter((row) => {
+        const matchChar = !charQuery || row.char.includes(charQuery);
+        const matchYomi = !yomiQuery || toHiragana(row.yomi).includes(yomiQuery);
+        const matchStyle = !styleQuery || row.style === styleQuery;
+        return matchChar && matchYomi && matchStyle;
+      });
+
+      renderSearch(filtered, true);
+    };
+
+    const layoutByCount = {
+      1: [{ x: 0, y: 0, w: 100, h: 100 }],
+      2: [
+        { x: 0, y: 0, w: 100, h: 50 },
+        { x: 0, y: 50, w: 100, h: 50 },
+      ],
+      3: [
+        { x: 50, y: 0, w: 50, h: 50 },
+        { x: 50, y: 50, w: 50, h: 50 },
+        { x: 0, y: 0, w: 50, h: 50 },
+      ],
+      4: [
+        { x: 50, y: 0, w: 50, h: 50 },
+        { x: 50, y: 50, w: 50, h: 50 },
+        { x: 0, y: 0, w: 50, h: 50 },
+        { x: 0, y: 50, w: 50, h: 50 },
+      ],
+      5: [
+        { x: 50, y: 0, w: 50, h: 33.3333 },
+        { x: 50, y: 33.3333, w: 50, h: 33.3333 },
+        { x: 50, y: 66.6666, w: 50, h: 33.3334 },
+        { x: 0, y: 0, w: 50, h: 33.3333 },
+        { x: 0, y: 33.3333, w: 50, h: 33.3333 },
+      ],
+      6: [
+        { x: 50, y: 0, w: 50, h: 33.3333 },
+        { x: 50, y: 33.3333, w: 50, h: 33.3333 },
+        { x: 50, y: 66.6666, w: 50, h: 33.3334 },
+        { x: 0, y: 0, w: 50, h: 33.3333 },
+        { x: 0, y: 33.3333, w: 50, h: 33.3333 },
+        { x: 0, y: 66.6666, w: 50, h: 33.3334 },
+      ],
+    };
+
+    const normalizeChars = (raw) => Array.from(raw.replace(/\s+/g, "")).slice(0, 6);
+
+    const renderTehon = () => {
+      const chars = normalizeChars(tehonInput.value.trim());
+      paper.innerHTML = "";
+
+      if (chars.length < 1 || chars.length > 6) {
+        tehonStatus.textContent = "1〜6文字で入力してください。";
+        return;
+      }
+
+      const layout = layoutByCount[chars.length];
+      const missingChars = [];
+
+      chars.forEach((char, index) => {
+        const box = layout[index];
+        const data = glyphMap.get(char);
+        const glyph = document.createElement("div");
+        glyph.className = "glyph";
+        glyph.style.left = `${box.x}%`;
+        glyph.style.top = `${box.y}%`;
+        glyph.style.width = `${box.w}%`;
+        glyph.style.height = `${box.h}%`;
+
+        if (data?.imagePath) {
+          const img = document.createElement("img");
+          img.src = data.imagePath;
+          img.alt = `${char}の手本画像`;
+          img.loading = "lazy";
+          glyph.append(img);
+        } else {
+          const fallback = document.createElement("div");
+          fallback.className = "fallback-char";
+          fallback.textContent = char;
+          glyph.append(fallback);
+          missingChars.push(char);
+        }
+
+        paper.append(glyph);
+      });
+
+      if (missingChars.length === 0) {
+        tehonStatus.textContent = `${chars.length}文字を配置しました。`;
+      } else {
+        tehonStatus.textContent = `配置しました（画像未登録: ${missingChars.join("、")}）。`;
+      }
+    };
+
+    searchBtn.addEventListener("click", search);
+    clearBtn.addEventListener("click", () => {
+      charInput.value = "";
+      yomiInput.value = "";
+      styleInput.value = "";
+      renderSearch([], false);
+    });
+
+    charInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") search();
+    });
+    yomiInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") search();
+    });
+    styleInput.addEventListener("change", search);
+    resultBody.addEventListener("click", (e) => {
+      const button = e.target.closest(".zoom-btn");
+      if (!button) return;
+      const index = Number(button.dataset.index);
+      const row = currentSearchRows[index];
+      if (!row) return;
+      openZoom(row);
+    });
+    zoomCloseBtn.addEventListener("click", closeZoom);
+    zoomModal.addEventListener("click", (e) => {
+      if (e.target === zoomModal) closeZoom();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !zoomModal.hidden) closeZoom();
+    });
+
+    tehonBtn.addEventListener("click", renderTehon);
+    tehonInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") renderTehon();
+    });
+
+    renderSearch([], false);
+  </script>
+</body>
+</html>
