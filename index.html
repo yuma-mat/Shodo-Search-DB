@@ -479,7 +479,8 @@
       const styleQuery = styleInput.value;
 
       const filtered = characters.filter((row) => {
-        const matchChar = !charQuery || row.char.includes(charQuery);
+        const matchChar =
+          !charQuery || row.char.includes(charQuery) || (row.note ?? "").includes(charQuery);
         const matchYomi = !yomiQuery || toHiragana(row.yomi).includes(yomiQuery);
         const matchStyle = !styleQuery || row.style === styleQuery;
         return matchChar && matchYomi && matchStyle;

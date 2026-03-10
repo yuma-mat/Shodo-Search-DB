@@ -360,6 +360,7 @@ def extract_chars_by_manual_boxes(
     binarize_method: str,
     adaptive_block_size: int,
     adaptive_c: int,
+    keep_manual_box_exact: bool,
 ) -> list[tuple[str, np.ndarray]] | None:
     entries = manual_boxes.get(str(page_no))
     if not entries or len(entries) < 5:
@@ -387,16 +388,19 @@ def extract_chars_by_manual_boxes(
         bw = max(1, min(bw, w - x))
         bh = max(1, min(bh, h - y))
         box_img = page_img[y : y + bh, x : x + bw]
-        char_img = tight_crop_with_components(
-            box_img,
-            pad_ratio=pad_ratio,
-            min_area_ratio=min_area_ratio,
-            min_short_ratio=min_short_ratio,
-            max_line_aspect=max_line_aspect,
-            binarize_method=binarize_method,
-            adaptive_block_size=adaptive_block_size,
-            adaptive_c=adaptive_c,
-        )
+        if keep_manual_box_exact:
+            char_img = box_img
+        else:
+            char_img = tight_crop_with_components(
+                box_img,
+                pad_ratio=pad_ratio,
+                min_area_ratio=min_area_ratio,
+                min_short_ratio=min_short_ratio,
+                max_line_aspect=max_line_aspect,
+                binarize_method=binarize_method,
+                adaptive_block_size=adaptive_block_size,
+                adaptive_c=adaptive_c,
+            )
         out.append((names[idx], char_img))
     return out
 
@@ -508,6 +512,11 @@ def main() -> None:
         default="",
         help="Manual box JSON from scripts/manual_box_editor.py (uses page-level boxes)",
     )
+    parser.add_argument(
+        "--keep-manual-box-exact",
+        action="store_true",
+        help="With --boxes-json, crop exactly by manual boxes without re-tight-cropping",
+    )
     args = parser.parse_args()
 
     pdf_path = Path(args.pdf).expanduser().resolve()
@@ -556,6 +565,7 @@ def main() -> None:
                 binarize_method=args.binarize_method,
                 adaptive_block_size=args.adaptive_block_size,
                 adaptive_c=args.adaptive_c,
+                keep_manual_box_exact=args.keep_manual_box_exact,
             )
             if extracted is None:
                 print(f"[warn] page {page_no}: manual boxes not found, fallback to method={args.method}")

@@ -384,8 +384,8 @@ window.CHARACTERS = [
     "note": ""
   },
   {
-    "char": "白",
-    "yomi": "しろ",
+    "char": "自",
+    "yomi": "じ",
     "style": "楷書",
     "imagePath": "data/images/KAI_p010_04.png",
     "sheetId": "KAI_p010",
@@ -441,7 +441,7 @@ window.CHARACTERS = [
   },
   {
     "char": "日",
-    "yomi": "ひ、にち、じつ",
+    "yomi": "にち",
     "style": "楷書",
     "imagePath": "data/images/KAI_p012_01.png",
     "sheetId": "KAI_p012",
@@ -480,8 +480,8 @@ window.CHARACTERS = [
     "note": ""
   },
   {
-    "char": "心",
-    "yomi": "こころ",
+    "char": "新",
+    "yomi": "しん",
     "style": "楷書",
     "imagePath": "data/images/KAI_p013_01.png",
     "sheetId": "KAI_p013",
@@ -713,7 +713,7 @@ window.CHARACTERS = [
   },
   {
     "char": "月",
-    "yomi": "つき、げつ、がつ",
+    "yomi": "がつ",
     "style": "楷書",
     "imagePath": "data/images/KAI_p018_05.png",
     "sheetId": "KAI_p018",
@@ -1197,6 +1197,2806 @@ window.CHARACTERS = [
     "style": "楷書",
     "imagePath": "data/images/KAI_p030_05.png",
     "sheetId": "KAI_p030",
+    "note": ""
+  },
+  {
+    "char": "明",
+    "yomi": "めい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p031_01.png",
+    "sheetId": "KAI_p031",
+    "note": ""
+  },
+  {
+    "char": "月",
+    "yomi": "がつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p031_02.png",
+    "sheetId": "KAI_p031",
+    "note": ""
+  },
+  {
+    "char": "輝",
+    "yomi": "てる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p031_03.png",
+    "sheetId": "KAI_p031",
+    "note": ""
+  },
+  {
+    "char": "林",
+    "yomi": "はやし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p031_04.png",
+    "sheetId": "KAI_p031",
+    "note": ""
+  },
+  {
+    "char": "道",
+    "yomi": "みち",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p031_05.png",
+    "sheetId": "KAI_p031",
+    "note": ""
+  },
+  {
+    "char": "心",
+    "yomi": "こころ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p032_01.png",
+    "sheetId": "KAI_p032",
+    "note": ""
+  },
+  {
+    "char": "正",
+    "yomi": "せい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p032_02.png",
+    "sheetId": "KAI_p032",
+    "note": ""
+  },
+  {
+    "char": "則",
+    "yomi": "のり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p032_03.png",
+    "sheetId": "KAI_p032",
+    "note": ""
+  },
+  {
+    "char": "筆",
+    "yomi": "ふで",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p032_04.png",
+    "sheetId": "KAI_p032",
+    "note": ""
+  },
+  {
+    "char": "正",
+    "yomi": "せい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p032_05.png",
+    "sheetId": "KAI_p032",
+    "note": ""
+  },
+  {
+    "char": "昇",
+    "yomi": "のぼる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p033_01.png",
+    "sheetId": "KAI_p033",
+    "note": ""
+  },
+  {
+    "char": "平",
+    "yomi": "たいら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p033_02.png",
+    "sheetId": "KAI_p033",
+    "note": ""
+  },
+  {
+    "char": "多",
+    "yomi": "た",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p033_03.png",
+    "sheetId": "KAI_p033",
+    "note": ""
+  },
+  {
+    "char": "楽",
+    "yomi": "らく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p033_04.png",
+    "sheetId": "KAI_p033",
+    "note": ""
+  },
+  {
+    "char": "事",
+    "yomi": "こと",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p033_05.png",
+    "sheetId": "KAI_p033",
+    "note": ""
+  },
+  {
+    "char": "野",
+    "yomi": "の",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p034_01.png",
+    "sheetId": "KAI_p034",
+    "note": ""
+  },
+  {
+    "char": "菊",
+    "yomi": "きく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p034_02.png",
+    "sheetId": "KAI_p034",
+    "note": ""
+  },
+  {
+    "char": "淡",
+    "yomi": "たん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p034_03.png",
+    "sheetId": "KAI_p034",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p034_04.png",
+    "sheetId": "KAI_p034",
+    "note": ""
+  },
+  {
+    "char": "心",
+    "yomi": "こころ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p034_05.png",
+    "sheetId": "KAI_p034",
+    "note": ""
+  },
+  {
+    "char": "萬",
+    "yomi": "まん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p035_01.png",
+    "sheetId": "KAI_p035",
+    "note": ""
+  },
+  {
+    "char": "歳",
+    "yomi": "とし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p035_02.png",
+    "sheetId": "KAI_p035",
+    "note": ""
+  },
+  {
+    "char": "寿",
+    "yomi": "ひさし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p035_03.png",
+    "sheetId": "KAI_p035",
+    "note": ""
+  },
+  {
+    "char": "而",
+    "yomi": "じ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p035_04.png",
+    "sheetId": "KAI_p035",
+    "note": ""
+  },
+  {
+    "char": "康",
+    "yomi": "やすし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p035_05.png",
+    "sheetId": "KAI_p035",
+    "note": ""
+  },
+  {
+    "char": "松",
+    "yomi": "まつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p036_01.png",
+    "sheetId": "KAI_p036",
+    "note": ""
+  },
+  {
+    "char": "竹",
+    "yomi": "たけ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p036_02.png",
+    "sheetId": "KAI_p036",
+    "note": ""
+  },
+  {
+    "char": "水",
+    "yomi": "みず",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p036_03.png",
+    "sheetId": "KAI_p036",
+    "note": ""
+  },
+  {
+    "char": "聲",
+    "yomi": "こえ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p036_04.png",
+    "sheetId": "KAI_p036",
+    "note": ""
+  },
+  {
+    "char": "涼",
+    "yomi": "りょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p036_05.png",
+    "sheetId": "KAI_p036",
+    "note": ""
+  },
+  {
+    "char": "弄",
+    "yomi": "ろう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p037_01.png",
+    "sheetId": "KAI_p037",
+    "note": ""
+  },
+  {
+    "char": "琴",
+    "yomi": "こん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p037_02.png",
+    "sheetId": "KAI_p037",
+    "note": ""
+  },
+  {
+    "char": "宜",
+    "yomi": "ぎ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p037_03.png",
+    "sheetId": "KAI_p037",
+    "note": ""
+  },
+  {
+    "char": "在",
+    "yomi": "ざい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p037_04.png",
+    "sheetId": "KAI_p037",
+    "note": ""
+  },
+  {
+    "char": "夜",
+    "yomi": "よる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p037_05.png",
+    "sheetId": "KAI_p037",
+    "note": ""
+  },
+  {
+    "char": "涼",
+    "yomi": "りょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p038_01.png",
+    "sheetId": "KAI_p038",
+    "note": ""
+  },
+  {
+    "char": "雨",
+    "yomi": "あめ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p038_02.png",
+    "sheetId": "KAI_p038",
+    "note": ""
+  },
+  {
+    "char": "消",
+    "yomi": "しょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p038_03.png",
+    "sheetId": "KAI_p038",
+    "note": ""
+  },
+  {
+    "char": "炎",
+    "yomi": "ほのお",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p038_04.png",
+    "sheetId": "KAI_p038",
+    "note": ""
+  },
+  {
+    "char": "煥",
+    "yomi": "かん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p038_05.png",
+    "sheetId": "KAI_p038",
+    "note": ""
+  },
+  {
+    "char": "千",
+    "yomi": "せん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p039_01.png",
+    "sheetId": "KAI_p039",
+    "note": ""
+  },
+  {
+    "char": "峰",
+    "yomi": "みね",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p039_02.png",
+    "sheetId": "KAI_p039",
+    "note": ""
+  },
+  {
+    "char": "紅",
+    "yomi": "くれない",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p039_03.png",
+    "sheetId": "KAI_p039",
+    "note": ""
+  },
+  {
+    "char": "葉",
+    "yomi": "は",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p039_04.png",
+    "sheetId": "KAI_p039",
+    "note": ""
+  },
+  {
+    "char": "村",
+    "yomi": "むら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p039_05.png",
+    "sheetId": "KAI_p039",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p040_01.png",
+    "sheetId": "KAI_p040",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p040_02.png",
+    "sheetId": "KAI_p040",
+    "note": ""
+  },
+  {
+    "char": "最",
+    "yomi": "さい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p040_03.png",
+    "sheetId": "KAI_p040",
+    "note": ""
+  },
+  {
+    "char": "可",
+    "yomi": "か",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p040_04.png",
+    "sheetId": "KAI_p040",
+    "note": ""
+  },
+  {
+    "char": "人",
+    "yomi": "にん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p040_05.png",
+    "sheetId": "KAI_p040",
+    "note": ""
+  },
+  {
+    "char": "瑶",
+    "yomi": "よう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p041_01.png",
+    "sheetId": "KAI_p041",
+    "note": ""
+  },
+  {
+    "char": "草",
+    "yomi": "くさ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p041_02.png",
+    "sheetId": "KAI_p041",
+    "note": ""
+  },
+  {
+    "char": "三",
+    "yomi": "さん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p041_03.png",
+    "sheetId": "KAI_p041",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p041_04.png",
+    "sheetId": "KAI_p041",
+    "note": ""
+  },
+  {
+    "char": "色",
+    "yomi": "いろ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p041_05.png",
+    "sheetId": "KAI_p041",
+    "note": ""
+  },
+  {
+    "char": "賀",
+    "yomi": "が",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p042_01.png",
+    "sheetId": "KAI_p042",
+    "note": ""
+  },
+  {
+    "char": "扇",
+    "yomi": "おうぎ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p042_02.png",
+    "sheetId": "KAI_p042",
+    "note": ""
+  },
+  {
+    "char": "動",
+    "yomi": "どう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p042_03.png",
+    "sheetId": "KAI_p042",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p042_04.png",
+    "sheetId": "KAI_p042",
+    "note": ""
+  },
+  {
+    "char": "風",
+    "yomi": "かぜ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p042_05.png",
+    "sheetId": "KAI_p042",
+    "note": ""
+  },
+  {
+    "char": "涼",
+    "yomi": "りょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p043_01.png",
+    "sheetId": "KAI_p043",
+    "note": ""
+  },
+  {
+    "char": "夜",
+    "yomi": "よる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p043_02.png",
+    "sheetId": "KAI_p043",
+    "note": ""
+  },
+  {
+    "char": "如",
+    "yomi": "じょ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p043_03.png",
+    "sheetId": "KAI_p043",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p043_04.png",
+    "sheetId": "KAI_p043",
+    "note": ""
+  },
+  {
+    "char": "水",
+    "yomi": "みず",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p043_05.png",
+    "sheetId": "KAI_p043",
+    "note": ""
+  },
+  {
+    "char": "梅",
+    "yomi": "うめ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p044_01.png",
+    "sheetId": "KAI_p044",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p044_02.png",
+    "sheetId": "KAI_p044",
+    "note": ""
+  },
+  {
+    "char": "呈",
+    "yomi": "てい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p044_03.png",
+    "sheetId": "KAI_p044",
+    "note": ""
+  },
+  {
+    "char": "秀",
+    "yomi": "しゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p044_04.png",
+    "sheetId": "KAI_p044",
+    "note": ""
+  },
+  {
+    "char": "色",
+    "yomi": "いろ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p044_05.png",
+    "sheetId": "KAI_p044",
+    "note": ""
+  },
+  {
+    "char": "福",
+    "yomi": "ふく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p045_01.png",
+    "sheetId": "KAI_p045",
+    "note": ""
+  },
+  {
+    "char": "生",
+    "yomi": "なま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p045_02.png",
+    "sheetId": "KAI_p045",
+    "note": ""
+  },
+  {
+    "char": "於",
+    "yomi": "お",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p045_03.png",
+    "sheetId": "KAI_p045",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p045_04.png",
+    "sheetId": "KAI_p045",
+    "note": ""
+  },
+  {
+    "char": "約",
+    "yomi": "やく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p045_05.png",
+    "sheetId": "KAI_p045",
+    "note": ""
+  },
+  {
+    "char": "寒",
+    "yomi": "かん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p046_01.png",
+    "sheetId": "KAI_p046",
+    "note": ""
+  },
+  {
+    "char": "色",
+    "yomi": "いろ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p046_02.png",
+    "sheetId": "KAI_p046",
+    "note": ""
+  },
+  {
+    "char": "五",
+    "yomi": "ご",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p046_03.png",
+    "sheetId": "KAI_p046",
+    "note": ""
+  },
+  {
+    "char": "陵",
+    "yomi": "りょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p046_04.png",
+    "sheetId": "KAI_p046",
+    "note": ""
+  },
+  {
+    "char": "松",
+    "yomi": "まつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p046_05.png",
+    "sheetId": "KAI_p046",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p047_01.png",
+    "sheetId": "KAI_p047",
+    "note": ""
+  },
+  {
+    "char": "坐",
+    "yomi": "ざ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p047_02.png",
+    "sheetId": "KAI_p047",
+    "note": ""
+  },
+  {
+    "char": "契",
+    "yomi": "けい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p047_03.png",
+    "sheetId": "KAI_p047",
+    "note": ""
+  },
+  {
+    "char": "心",
+    "yomi": "こころ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p047_04.png",
+    "sheetId": "KAI_p047",
+    "note": ""
+  },
+  {
+    "char": "賞",
+    "yomi": "しょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p047_05.png",
+    "sheetId": "KAI_p047",
+    "note": ""
+  },
+  {
+    "char": "筆",
+    "yomi": "ふで",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p048_01.png",
+    "sheetId": "KAI_p048",
+    "note": ""
+  },
+  {
+    "char": "硯",
+    "yomi": "すずり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p048_02.png",
+    "sheetId": "KAI_p048",
+    "note": ""
+  },
+  {
+    "char": "得",
+    "yomi": "え",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p048_03.png",
+    "sheetId": "KAI_p048",
+    "note": ""
+  },
+  {
+    "char": "佳",
+    "yomi": "か",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p048_04.png",
+    "sheetId": "KAI_p048",
+    "note": ""
+  },
+  {
+    "char": "友",
+    "yomi": "とも",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p048_05.png",
+    "sheetId": "KAI_p048",
+    "note": ""
+  },
+  {
+    "char": "桃",
+    "yomi": "もも",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p049_01.png",
+    "sheetId": "KAI_p049",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p049_02.png",
+    "sheetId": "KAI_p049",
+    "note": ""
+  },
+  {
+    "char": "千",
+    "yomi": "せん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p049_03.png",
+    "sheetId": "KAI_p049",
+    "note": ""
+  },
+  {
+    "char": "歳",
+    "yomi": "とし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p049_04.png",
+    "sheetId": "KAI_p049",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p049_05.png",
+    "sheetId": "KAI_p049",
+    "note": ""
+  },
+  {
+    "char": "瑶",
+    "yomi": "よう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p050_01.png",
+    "sheetId": "KAI_p050",
+    "note": ""
+  },
+  {
+    "char": "草",
+    "yomi": "くさ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p050_02.png",
+    "sheetId": "KAI_p050",
+    "note": ""
+  },
+  {
+    "char": "三",
+    "yomi": "さん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p050_03.png",
+    "sheetId": "KAI_p050",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p050_04.png",
+    "sheetId": "KAI_p050",
+    "note": ""
+  },
+  {
+    "char": "色",
+    "yomi": "いろ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p050_05.png",
+    "sheetId": "KAI_p050",
+    "note": ""
+  },
+  {
+    "char": "公",
+    "yomi": "こう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p051_01.png",
+    "sheetId": "KAI_p051",
+    "note": ""
+  },
+  {
+    "char": "心",
+    "yomi": "こころ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p051_02.png",
+    "sheetId": "KAI_p051",
+    "note": ""
+  },
+  {
+    "char": "如",
+    "yomi": "じょ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p051_03.png",
+    "sheetId": "KAI_p051",
+    "note": ""
+  },
+  {
+    "char": "日",
+    "yomi": "にち",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p051_04.png",
+    "sheetId": "KAI_p051",
+    "note": ""
+  },
+  {
+    "char": "月",
+    "yomi": "がつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p051_05.png",
+    "sheetId": "KAI_p051",
+    "note": ""
+  },
+  {
+    "char": "梅",
+    "yomi": "うめ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p052_01.png",
+    "sheetId": "KAI_p052",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p052_02.png",
+    "sheetId": "KAI_p052",
+    "note": ""
+  },
+  {
+    "char": "呈",
+    "yomi": "てい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p052_03.png",
+    "sheetId": "KAI_p052",
+    "note": ""
+  },
+  {
+    "char": "秀",
+    "yomi": "しゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p052_04.png",
+    "sheetId": "KAI_p052",
+    "note": ""
+  },
+  {
+    "char": "色",
+    "yomi": "いろ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p052_05.png",
+    "sheetId": "KAI_p052",
+    "note": ""
+  },
+  {
+    "char": "山",
+    "yomi": "やま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p053_01.png",
+    "sheetId": "KAI_p053",
+    "note": ""
+  },
+  {
+    "char": "峰",
+    "yomi": "みね",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p053_02.png",
+    "sheetId": "KAI_p053",
+    "note": ""
+  },
+  {
+    "char": "染",
+    "yomi": "そめ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p053_03.png",
+    "sheetId": "KAI_p053",
+    "note": ""
+  },
+  {
+    "char": "月",
+    "yomi": "がつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p053_04.png",
+    "sheetId": "KAI_p053",
+    "note": ""
+  },
+  {
+    "char": "寒",
+    "yomi": "かん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p053_05.png",
+    "sheetId": "KAI_p053",
+    "note": ""
+  },
+  {
+    "char": "冬",
+    "yomi": "ふゆ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p054_01.png",
+    "sheetId": "KAI_p054",
+    "note": ""
+  },
+  {
+    "char": "嶺",
+    "yomi": "みね",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p054_02.png",
+    "sheetId": "KAI_p054",
+    "note": ""
+  },
+  {
+    "char": "秀",
+    "yomi": "しゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p054_03.png",
+    "sheetId": "KAI_p054",
+    "note": ""
+  },
+  {
+    "char": "孤",
+    "yomi": "こ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p054_04.png",
+    "sheetId": "KAI_p054",
+    "note": ""
+  },
+  {
+    "char": "松",
+    "yomi": "まつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p054_05.png",
+    "sheetId": "KAI_p054",
+    "note": ""
+  },
+  {
+    "char": "瑞",
+    "yomi": "ずい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p055_01.png",
+    "sheetId": "KAI_p055",
+    "note": ""
+  },
+  {
+    "char": "氣",
+    "yomi": "き",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p055_02.png",
+    "sheetId": "KAI_p055",
+    "note": "気"
+  },
+  {
+    "char": "満",
+    "yomi": "まん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p055_03.png",
+    "sheetId": "KAI_p055",
+    "note": ""
+  },
+  {
+    "char": "梅",
+    "yomi": "うめ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p055_04.png",
+    "sheetId": "KAI_p055",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p055_05.png",
+    "sheetId": "KAI_p055",
+    "note": ""
+  },
+  {
+    "char": "老",
+    "yomi": "ろう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p056_01.png",
+    "sheetId": "KAI_p056",
+    "note": ""
+  },
+  {
+    "char": "鶴",
+    "yomi": "つる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p056_02.png",
+    "sheetId": "KAI_p056",
+    "note": ""
+  },
+  {
+    "char": "萬",
+    "yomi": "まん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p056_03.png",
+    "sheetId": "KAI_p056",
+    "note": ""
+  },
+  {
+    "char": "里",
+    "yomi": "さと",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p056_04.png",
+    "sheetId": "KAI_p056",
+    "note": ""
+  },
+  {
+    "char": "心",
+    "yomi": "こころ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p056_05.png",
+    "sheetId": "KAI_p056",
+    "note": ""
+  },
+  {
+    "char": "微",
+    "yomi": "び",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p057_01.png",
+    "sheetId": "KAI_p057",
+    "note": ""
+  },
+  {
+    "char": "凘",
+    "yomi": "し",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p057_02.png",
+    "sheetId": "KAI_p057",
+    "note": ""
+  },
+  {
+    "char": "入",
+    "yomi": "にゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p057_03.png",
+    "sheetId": "KAI_p057",
+    "note": ""
+  },
+  {
+    "char": "硯",
+    "yomi": "すずり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p057_04.png",
+    "sheetId": "KAI_p057",
+    "note": ""
+  },
+  {
+    "char": "生",
+    "yomi": "なま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p057_05.png",
+    "sheetId": "KAI_p057",
+    "note": ""
+  },
+  {
+    "char": "繁",
+    "yomi": "はん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p058_01.png",
+    "sheetId": "KAI_p058",
+    "note": ""
+  },
+  {
+    "char": "菊",
+    "yomi": "きく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p058_02.png",
+    "sheetId": "KAI_p058",
+    "note": ""
+  },
+  {
+    "char": "照",
+    "yomi": "しょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p058_03.png",
+    "sheetId": "KAI_p058",
+    "note": ""
+  },
+  {
+    "char": "深",
+    "yomi": "しん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p058_04.png",
+    "sheetId": "KAI_p058",
+    "note": ""
+  },
+  {
+    "char": "居",
+    "yomi": "きょ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p058_05.png",
+    "sheetId": "KAI_p058",
+    "note": ""
+  },
+  {
+    "char": "鳴",
+    "yomi": "めい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p059_01.png",
+    "sheetId": "KAI_p059",
+    "note": ""
+  },
+  {
+    "char": "鳳",
+    "yomi": "おおとり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p059_02.png",
+    "sheetId": "KAI_p059",
+    "note": ""
+  },
+  {
+    "char": "栖",
+    "yomi": "せい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p059_03.png",
+    "sheetId": "KAI_p059",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p059_04.png",
+    "sheetId": "KAI_p059",
+    "note": ""
+  },
+  {
+    "char": "梧",
+    "yomi": "ご",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p059_05.png",
+    "sheetId": "KAI_p059",
+    "note": ""
+  },
+  {
+    "char": "桃",
+    "yomi": "もも",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p060_01.png",
+    "sheetId": "KAI_p060",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p060_02.png",
+    "sheetId": "KAI_p060",
+    "note": ""
+  },
+  {
+    "char": "千",
+    "yomi": "せん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p060_03.png",
+    "sheetId": "KAI_p060",
+    "note": ""
+  },
+  {
+    "char": "歳",
+    "yomi": "とし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p060_04.png",
+    "sheetId": "KAI_p060",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p060_05.png",
+    "sheetId": "KAI_p060",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p061_01.png",
+    "sheetId": "KAI_p061",
+    "note": ""
+  },
+  {
+    "char": "廻",
+    "yomi": "かい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p061_02.png",
+    "sheetId": "KAI_p061",
+    "note": ""
+  },
+  {
+    "char": "旭",
+    "yomi": "あさひ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p061_03.png",
+    "sheetId": "KAI_p061",
+    "note": ""
+  },
+  {
+    "char": "日",
+    "yomi": "にち",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p061_04.png",
+    "sheetId": "KAI_p061",
+    "note": ""
+  },
+  {
+    "char": "鮮",
+    "yomi": "せん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p061_05.png",
+    "sheetId": "KAI_p061",
+    "note": ""
+  },
+  {
+    "char": "野",
+    "yomi": "の",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p062_01.png",
+    "sheetId": "KAI_p062",
+    "note": ""
+  },
+  {
+    "char": "菊",
+    "yomi": "きく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p062_02.png",
+    "sheetId": "KAI_p062",
+    "note": ""
+  },
+  {
+    "char": "淡",
+    "yomi": "たん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p062_03.png",
+    "sheetId": "KAI_p062",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p062_04.png",
+    "sheetId": "KAI_p062",
+    "note": ""
+  },
+  {
+    "char": "心",
+    "yomi": "こころ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p062_05.png",
+    "sheetId": "KAI_p062",
+    "note": ""
+  },
+  {
+    "char": "青",
+    "yomi": "あお",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p063_01.png",
+    "sheetId": "KAI_p063",
+    "note": ""
+  },
+  {
+    "char": "山",
+    "yomi": "やま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p063_02.png",
+    "sheetId": "KAI_p063",
+    "note": ""
+  },
+  {
+    "char": "景",
+    "yomi": "けい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p063_03.png",
+    "sheetId": "KAI_p063",
+    "note": ""
+  },
+  {
+    "char": "物",
+    "yomi": "もの",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p063_04.png",
+    "sheetId": "KAI_p063",
+    "note": ""
+  },
+  {
+    "char": "妍",
+    "yomi": "けん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p063_05.png",
+    "sheetId": "KAI_p063",
+    "note": ""
+  },
+  {
+    "char": "八",
+    "yomi": "はち",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p064_01.png",
+    "sheetId": "KAI_p064",
+    "note": ""
+  },
+  {
+    "char": "荒",
+    "yomi": "こう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p064_02.png",
+    "sheetId": "KAI_p064",
+    "note": ""
+  },
+  {
+    "char": "調",
+    "yomi": "ちょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p064_03.png",
+    "sheetId": "KAI_p064",
+    "note": ""
+  },
+  {
+    "char": "淑",
+    "yomi": "しゅく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p064_04.png",
+    "sheetId": "KAI_p064",
+    "note": ""
+  },
+  {
+    "char": "氣",
+    "yomi": "き",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p064_05.png",
+    "sheetId": "KAI_p064",
+    "note": "気"
+  },
+  {
+    "char": "習",
+    "yomi": "しゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p065_01.png",
+    "sheetId": "KAI_p065",
+    "note": ""
+  },
+  {
+    "char": "静",
+    "yomi": "せい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p065_02.png",
+    "sheetId": "KAI_p065",
+    "note": ""
+  },
+  {
+    "char": "求",
+    "yomi": "きゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p065_03.png",
+    "sheetId": "KAI_p065",
+    "note": ""
+  },
+  {
+    "char": "神",
+    "yomi": "かみ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p065_04.png",
+    "sheetId": "KAI_p065",
+    "note": ""
+  },
+  {
+    "char": "悟",
+    "yomi": "さとし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p065_05.png",
+    "sheetId": "KAI_p065",
+    "note": ""
+  },
+  {
+    "char": "瑞",
+    "yomi": "ずい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p066_01.png",
+    "sheetId": "KAI_p066",
+    "note": ""
+  },
+  {
+    "char": "雪",
+    "yomi": "ゆき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p066_02.png",
+    "sheetId": "KAI_p066",
+    "note": ""
+  },
+  {
+    "char": "近",
+    "yomi": "きん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p066_03.png",
+    "sheetId": "KAI_p066",
+    "note": ""
+  },
+  {
+    "char": "浮",
+    "yomi": "ふ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p066_04.png",
+    "sheetId": "KAI_p066",
+    "note": ""
+  },
+  {
+    "char": "空",
+    "yomi": "そら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p066_05.png",
+    "sheetId": "KAI_p066",
+    "note": ""
+  },
+  {
+    "char": "白",
+    "yomi": "しろ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p067_01.png",
+    "sheetId": "KAI_p067",
+    "note": ""
+  },
+  {
+    "char": "雲",
+    "yomi": "くも",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p067_02.png",
+    "sheetId": "KAI_p067",
+    "note": ""
+  },
+  {
+    "char": "満",
+    "yomi": "まん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p067_03.png",
+    "sheetId": "KAI_p067",
+    "note": ""
+  },
+  {
+    "char": "空",
+    "yomi": "そら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p067_04.png",
+    "sheetId": "KAI_p067",
+    "note": ""
+  },
+  {
+    "char": "山",
+    "yomi": "やま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p067_05.png",
+    "sheetId": "KAI_p067",
+    "note": ""
+  },
+  {
+    "char": "擧",
+    "yomi": "こぶし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p068_01.png",
+    "sheetId": "KAI_p068",
+    "note": "挙"
+  },
+  {
+    "char": "杯",
+    "yomi": "はい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p068_02.png",
+    "sheetId": "KAI_p068",
+    "note": ""
+  },
+  {
+    "char": "邀",
+    "yomi": "よう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p068_03.png",
+    "sheetId": "KAI_p068",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p068_04.png",
+    "sheetId": "KAI_p068",
+    "note": ""
+  },
+  {
+    "char": "光",
+    "yomi": "ひかり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p068_05.png",
+    "sheetId": "KAI_p068",
+    "note": ""
+  },
+  {
+    "char": "晨",
+    "yomi": "しん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p069_01.png",
+    "sheetId": "KAI_p069",
+    "note": ""
+  },
+  {
+    "char": "露",
+    "yomi": "つゆ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p069_02.png",
+    "sheetId": "KAI_p069",
+    "note": ""
+  },
+  {
+    "char": "發",
+    "yomi": "はつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p069_03.png",
+    "sheetId": "KAI_p069",
+    "note": "発"
+  },
+  {
+    "char": "荷",
+    "yomi": "か",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p069_04.png",
+    "sheetId": "KAI_p069",
+    "note": ""
+  },
+  {
+    "char": "香",
+    "yomi": "かおり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p069_05.png",
+    "sheetId": "KAI_p069",
+    "note": ""
+  },
+  {
+    "char": "煎",
+    "yomi": "せん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p070_01.png",
+    "sheetId": "KAI_p070",
+    "note": ""
+  },
+  {
+    "char": "茶",
+    "yomi": "ちゃ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p070_02.png",
+    "sheetId": "KAI_p070",
+    "note": ""
+  },
+  {
+    "char": "竹",
+    "yomi": "たけ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p070_03.png",
+    "sheetId": "KAI_p070",
+    "note": ""
+  },
+  {
+    "char": "送",
+    "yomi": "そう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p070_04.png",
+    "sheetId": "KAI_p070",
+    "note": ""
+  },
+  {
+    "char": "風",
+    "yomi": "かぜ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p070_05.png",
+    "sheetId": "KAI_p070",
+    "note": ""
+  },
+  {
+    "char": "詠",
+    "yomi": "えい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p071_01.png",
+    "sheetId": "KAI_p071",
+    "note": ""
+  },
+  {
+    "char": "歌",
+    "yomi": "うた",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p071_02.png",
+    "sheetId": "KAI_p071",
+    "note": ""
+  },
+  {
+    "char": "際",
+    "yomi": "きわ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p071_03.png",
+    "sheetId": "KAI_p071",
+    "note": ""
+  },
+  {
+    "char": "昇",
+    "yomi": "のぼる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p071_04.png",
+    "sheetId": "KAI_p071",
+    "note": ""
+  },
+  {
+    "char": "平",
+    "yomi": "たいら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p071_05.png",
+    "sheetId": "KAI_p071",
+    "note": ""
+  },
+  {
+    "char": "守",
+    "yomi": "しゅ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p072_01.png",
+    "sheetId": "KAI_p072",
+    "note": ""
+  },
+  {
+    "char": "氷",
+    "yomi": "こおり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p072_02.png",
+    "sheetId": "KAI_p072",
+    "note": ""
+  },
+  {
+    "char": "壷",
+    "yomi": "つぼ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p072_03.png",
+    "sheetId": "KAI_p072",
+    "note": ""
+  },
+  {
+    "char": "之",
+    "yomi": "ゆき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p072_04.png",
+    "sheetId": "KAI_p072",
+    "note": ""
+  },
+  {
+    "char": "潔",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p072_05.png",
+    "sheetId": "KAI_p072",
+    "note": ""
+  },
+  {
+    "char": "冬",
+    "yomi": "ふゆ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p073_01.png",
+    "sheetId": "KAI_p073",
+    "note": ""
+  },
+  {
+    "char": "来",
+    "yomi": "らい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p073_02.png",
+    "sheetId": "KAI_p073",
+    "note": ""
+  },
+  {
+    "char": "幽",
+    "yomi": "ゆう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p073_03.png",
+    "sheetId": "KAI_p073",
+    "note": ""
+  },
+  {
+    "char": "興",
+    "yomi": "きょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p073_04.png",
+    "sheetId": "KAI_p073",
+    "note": ""
+  },
+  {
+    "char": "長",
+    "yomi": "ちょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p073_05.png",
+    "sheetId": "KAI_p073",
+    "note": ""
+  },
+  {
+    "char": "青",
+    "yomi": "あお",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p074_01.png",
+    "sheetId": "KAI_p074",
+    "note": ""
+  },
+  {
+    "char": "山",
+    "yomi": "やま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p074_02.png",
+    "sheetId": "KAI_p074",
+    "note": ""
+  },
+  {
+    "char": "景",
+    "yomi": "けい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p074_03.png",
+    "sheetId": "KAI_p074",
+    "note": ""
+  },
+  {
+    "char": "物",
+    "yomi": "もの",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p074_04.png",
+    "sheetId": "KAI_p074",
+    "note": ""
+  },
+  {
+    "char": "妍",
+    "yomi": "けん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p074_05.png",
+    "sheetId": "KAI_p074",
+    "note": ""
+  },
+  {
+    "char": "栽",
+    "yomi": "さい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p075_01.png",
+    "sheetId": "KAI_p075",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p075_02.png",
+    "sheetId": "KAI_p075",
+    "note": ""
+  },
+  {
+    "char": "楽",
+    "yomi": "らく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p075_03.png",
+    "sheetId": "KAI_p075",
+    "note": ""
+  },
+  {
+    "char": "太",
+    "yomi": "た",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p075_04.png",
+    "sheetId": "KAI_p075",
+    "note": ""
+  },
+  {
+    "char": "平",
+    "yomi": "たいら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p075_05.png",
+    "sheetId": "KAI_p075",
+    "note": ""
+  },
+  {
+    "char": "敬",
+    "yomi": "たかし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p076_01.png",
+    "sheetId": "KAI_p076",
+    "note": ""
+  },
+  {
+    "char": "徳",
+    "yomi": "とく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p076_02.png",
+    "sheetId": "KAI_p076",
+    "note": ""
+  },
+  {
+    "char": "之",
+    "yomi": "ゆき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p076_03.png",
+    "sheetId": "KAI_p076",
+    "note": ""
+  },
+  {
+    "char": "恪",
+    "yomi": "かく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p076_04.png",
+    "sheetId": "KAI_p076",
+    "note": ""
+  },
+  {
+    "char": "也",
+    "yomi": "や",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p076_05.png",
+    "sheetId": "KAI_p076",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p077_01.png",
+    "sheetId": "KAI_p077",
+    "note": ""
+  },
+  {
+    "char": "氣",
+    "yomi": "き",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p077_02.png",
+    "sheetId": "KAI_p077",
+    "note": "気"
+  },
+  {
+    "char": "暖",
+    "yomi": "だん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p077_03.png",
+    "sheetId": "KAI_p077",
+    "note": ""
+  },
+  {
+    "char": "晴",
+    "yomi": "せい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p077_04.png",
+    "sheetId": "KAI_p077",
+    "note": ""
+  },
+  {
+    "char": "雲",
+    "yomi": "くも",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p077_05.png",
+    "sheetId": "KAI_p077",
+    "note": ""
+  },
+  {
+    "char": "閑",
+    "yomi": "ひま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p078_01.png",
+    "sheetId": "KAI_p078",
+    "note": ""
+  },
+  {
+    "char": "居",
+    "yomi": "きょ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p078_02.png",
+    "sheetId": "KAI_p078",
+    "note": ""
+  },
+  {
+    "char": "養",
+    "yomi": "よう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p078_03.png",
+    "sheetId": "KAI_p078",
+    "note": ""
+  },
+  {
+    "char": "髙",
+    "yomi": "たか",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p078_04.png",
+    "sheetId": "KAI_p078",
+    "note": "高"
+  },
+  {
+    "char": "志",
+    "yomi": "こころざし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p078_05.png",
+    "sheetId": "KAI_p078",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p079_01.png",
+    "sheetId": "KAI_p079",
+    "note": ""
+  },
+  {
+    "char": "吟",
+    "yomi": "ぎん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p079_02.png",
+    "sheetId": "KAI_p079",
+    "note": ""
+  },
+  {
+    "char": "夜",
+    "yomi": "よる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p079_03.png",
+    "sheetId": "KAI_p079",
+    "note": ""
+  },
+  {
+    "char": "煮",
+    "yomi": "に",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p079_04.png",
+    "sheetId": "KAI_p079",
+    "note": ""
+  },
+  {
+    "char": "茶",
+    "yomi": "ちゃ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p079_05.png",
+    "sheetId": "KAI_p079",
+    "note": ""
+  },
+  {
+    "char": "山",
+    "yomi": "やま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p080_01.png",
+    "sheetId": "KAI_p080",
+    "note": ""
+  },
+  {
+    "char": "月",
+    "yomi": "がつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p080_02.png",
+    "sheetId": "KAI_p080",
+    "note": ""
+  },
+  {
+    "char": "夜",
+    "yomi": "よる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p080_03.png",
+    "sheetId": "KAI_p080",
+    "note": ""
+  },
+  {
+    "char": "窓",
+    "yomi": "まど",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p080_04.png",
+    "sheetId": "KAI_p080",
+    "note": ""
+  },
+  {
+    "char": "寒",
+    "yomi": "かん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p080_05.png",
+    "sheetId": "KAI_p080",
+    "note": ""
+  },
+  {
+    "char": "薫",
+    "yomi": "かおる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p081_01.png",
+    "sheetId": "KAI_p081",
+    "note": ""
+  },
+  {
+    "char": "風",
+    "yomi": "かぜ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p081_02.png",
+    "sheetId": "KAI_p081",
+    "note": ""
+  },
+  {
+    "char": "細",
+    "yomi": "さい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p081_03.png",
+    "sheetId": "KAI_p081",
+    "note": ""
+  },
+  {
+    "char": "葛",
+    "yomi": "くず",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p081_04.png",
+    "sheetId": "KAI_p081",
+    "note": ""
+  },
+  {
+    "char": "涼",
+    "yomi": "りょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p081_05.png",
+    "sheetId": "KAI_p081",
+    "note": ""
+  },
+  {
+    "char": "静",
+    "yomi": "せい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p082_01.png",
+    "sheetId": "KAI_p082",
+    "note": ""
+  },
+  {
+    "char": "者",
+    "yomi": "もの",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p082_02.png",
+    "sheetId": "KAI_p082",
+    "note": ""
+  },
+  {
+    "char": "心",
+    "yomi": "こころ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p082_03.png",
+    "sheetId": "KAI_p082",
+    "note": ""
+  },
+  {
+    "char": "自",
+    "yomi": "じ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p082_04.png",
+    "sheetId": "KAI_p082",
+    "note": ""
+  },
+  {
+    "char": "妙",
+    "yomi": "みょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p082_05.png",
+    "sheetId": "KAI_p082",
+    "note": ""
+  },
+  {
+    "char": "明",
+    "yomi": "めい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p083_01.png",
+    "sheetId": "KAI_p083",
+    "note": ""
+  },
+  {
+    "char": "月",
+    "yomi": "がつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p083_02.png",
+    "sheetId": "KAI_p083",
+    "note": ""
+  },
+  {
+    "char": "流",
+    "yomi": "りゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p083_03.png",
+    "sheetId": "KAI_p083",
+    "note": ""
+  },
+  {
+    "char": "素",
+    "yomi": "もと",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p083_04.png",
+    "sheetId": "KAI_p083",
+    "note": ""
+  },
+  {
+    "char": "光",
+    "yomi": "ひかり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p083_05.png",
+    "sheetId": "KAI_p083",
+    "note": ""
+  },
+  {
+    "char": "垂",
+    "yomi": "すい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p084_01.png",
+    "sheetId": "KAI_p084",
+    "note": ""
+  },
+  {
+    "char": "藤",
+    "yomi": "ふじ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p084_02.png",
+    "sheetId": "KAI_p084",
+    "note": ""
+  },
+  {
+    "char": "引",
+    "yomi": "ひき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p084_03.png",
+    "sheetId": "KAI_p084",
+    "note": ""
+  },
+  {
+    "char": "夏",
+    "yomi": "なつ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p084_04.png",
+    "sheetId": "KAI_p084",
+    "note": ""
+  },
+  {
+    "char": "涼",
+    "yomi": "りょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p084_05.png",
+    "sheetId": "KAI_p084",
+    "note": ""
+  },
+  {
+    "char": "新",
+    "yomi": "しん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p085_01.png",
+    "sheetId": "KAI_p085",
+    "note": ""
+  },
+  {
+    "char": "篁",
+    "yomi": "たかむら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p085_02.png",
+    "sheetId": "KAI_p085",
+    "note": ""
+  },
+  {
+    "char": "動",
+    "yomi": "どう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p085_03.png",
+    "sheetId": "KAI_p085",
+    "note": ""
+  },
+  {
+    "char": "清",
+    "yomi": "きよし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p085_04.png",
+    "sheetId": "KAI_p085",
+    "note": ""
+  },
+  {
+    "char": "節",
+    "yomi": "ふし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p085_05.png",
+    "sheetId": "KAI_p085",
+    "note": ""
+  },
+  {
+    "char": "天",
+    "yomi": "てん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p086_01.png",
+    "sheetId": "KAI_p086",
+    "note": ""
+  },
+  {
+    "char": "地",
+    "yomi": "ち",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p086_02.png",
+    "sheetId": "KAI_p086",
+    "note": ""
+  },
+  {
+    "char": "有",
+    "yomi": "あり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p086_03.png",
+    "sheetId": "KAI_p086",
+    "note": ""
+  },
+  {
+    "char": "至",
+    "yomi": "いた",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p086_04.png",
+    "sheetId": "KAI_p086",
+    "note": ""
+  },
+  {
+    "char": "文",
+    "yomi": "ぶん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p086_05.png",
+    "sheetId": "KAI_p086",
+    "note": ""
+  },
+  {
+    "char": "紅",
+    "yomi": "くれない",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p087_01.png",
+    "sheetId": "KAI_p087",
+    "note": ""
+  },
+  {
+    "char": "樹",
+    "yomi": "き",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p087_02.png",
+    "sheetId": "KAI_p087",
+    "note": ""
+  },
+  {
+    "char": "添",
+    "yomi": "そえ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p087_03.png",
+    "sheetId": "KAI_p087",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p087_04.png",
+    "sheetId": "KAI_p087",
+    "note": ""
+  },
+  {
+    "char": "色",
+    "yomi": "いろ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p087_05.png",
+    "sheetId": "KAI_p087",
+    "note": ""
+  },
+  {
+    "char": "細",
+    "yomi": "さい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p088_01.png",
+    "sheetId": "KAI_p088",
+    "note": ""
+  },
+  {
+    "char": "雨",
+    "yomi": "あめ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p088_02.png",
+    "sheetId": "KAI_p088",
+    "note": ""
+  },
+  {
+    "char": "菊",
+    "yomi": "きく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p088_03.png",
+    "sheetId": "KAI_p088",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p088_04.png",
+    "sheetId": "KAI_p088",
+    "note": ""
+  },
+  {
+    "char": "天",
+    "yomi": "てん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p088_05.png",
+    "sheetId": "KAI_p088",
+    "note": ""
+  },
+  {
+    "char": "雁",
+    "yomi": "がん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p089_01.png",
+    "sheetId": "KAI_p089",
+    "note": ""
+  },
+  {
+    "char": "字",
+    "yomi": "じ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p089_02.png",
+    "sheetId": "KAI_p089",
+    "note": ""
+  },
+  {
+    "char": "写",
+    "yomi": "しゃ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p089_03.png",
+    "sheetId": "KAI_p089",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p089_04.png",
+    "sheetId": "KAI_p089",
+    "note": ""
+  },
+  {
+    "char": "空",
+    "yomi": "そら",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p089_05.png",
+    "sheetId": "KAI_p089",
+    "note": ""
+  },
+  {
+    "char": "幽",
+    "yomi": "ゆう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p090_01.png",
+    "sheetId": "KAI_p090",
+    "note": ""
+  },
+  {
+    "char": "蘭",
+    "yomi": "らん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p090_02.png",
+    "sheetId": "KAI_p090",
+    "note": ""
+  },
+  {
+    "char": "一",
+    "yomi": "いち",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p090_03.png",
+    "sheetId": "KAI_p090",
+    "note": ""
+  },
+  {
+    "char": "國",
+    "yomi": "くに",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p090_04.png",
+    "sheetId": "KAI_p090",
+    "note": "国"
+  },
+  {
+    "char": "香",
+    "yomi": "かおり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p090_05.png",
+    "sheetId": "KAI_p090",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p091_01.png",
+    "sheetId": "KAI_p091",
+    "note": ""
+  },
+  {
+    "char": "風",
+    "yomi": "かぜ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p091_02.png",
+    "sheetId": "KAI_p091",
+    "note": ""
+  },
+  {
+    "char": "遍",
+    "yomi": "へん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p091_03.png",
+    "sheetId": "KAI_p091",
+    "note": ""
+  },
+  {
+    "char": "宇",
+    "yomi": "う",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p091_04.png",
+    "sheetId": "KAI_p091",
+    "note": ""
+  },
+  {
+    "char": "宙",
+    "yomi": "ちゅう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p091_05.png",
+    "sheetId": "KAI_p091",
+    "note": ""
+  },
+  {
+    "char": "楽",
+    "yomi": "らく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p092_01.png",
+    "sheetId": "KAI_p092",
+    "note": ""
+  },
+  {
+    "char": "意",
+    "yomi": "い",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p092_02.png",
+    "sheetId": "KAI_p092",
+    "note": ""
+  },
+  {
+    "char": "在",
+    "yomi": "ざい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p092_03.png",
+    "sheetId": "KAI_p092",
+    "note": ""
+  },
+  {
+    "char": "泉",
+    "yomi": "いずみ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p092_04.png",
+    "sheetId": "KAI_p092",
+    "note": ""
+  },
+  {
+    "char": "石",
+    "yomi": "いし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p092_05.png",
+    "sheetId": "KAI_p092",
+    "note": ""
+  },
+  {
+    "char": "山",
+    "yomi": "やま",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p093_01.png",
+    "sheetId": "KAI_p093",
+    "note": ""
+  },
+  {
+    "char": "意",
+    "yomi": "い",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p093_02.png",
+    "sheetId": "KAI_p093",
+    "note": ""
+  },
+  {
+    "char": "向",
+    "yomi": "こう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p093_03.png",
+    "sheetId": "KAI_p093",
+    "note": ""
+  },
+  {
+    "char": "秋",
+    "yomi": "あき",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p093_04.png",
+    "sheetId": "KAI_p093",
+    "note": ""
+  },
+  {
+    "char": "多",
+    "yomi": "た",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p093_05.png",
+    "sheetId": "KAI_p093",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p094_01.png",
+    "sheetId": "KAI_p094",
+    "note": ""
+  },
+  {
+    "char": "至",
+    "yomi": "いた",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p094_02.png",
+    "sheetId": "KAI_p094",
+    "note": ""
+  },
+  {
+    "char": "草",
+    "yomi": "くさ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p094_03.png",
+    "sheetId": "KAI_p094",
+    "note": ""
+  },
+  {
+    "char": "木",
+    "yomi": "き",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p094_04.png",
+    "sheetId": "KAI_p094",
+    "note": ""
+  },
+  {
+    "char": "繁",
+    "yomi": "はん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p094_05.png",
+    "sheetId": "KAI_p094",
+    "note": ""
+  },
+  {
+    "char": "竹",
+    "yomi": "たけ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p095_01.png",
+    "sheetId": "KAI_p095",
+    "note": ""
+  },
+  {
+    "char": "細",
+    "yomi": "さい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p095_02.png",
+    "sheetId": "KAI_p095",
+    "note": ""
+  },
+  {
+    "char": "野",
+    "yomi": "の",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p095_03.png",
+    "sheetId": "KAI_p095",
+    "note": ""
+  },
+  {
+    "char": "池",
+    "yomi": "いけ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p095_04.png",
+    "sheetId": "KAI_p095",
+    "note": ""
+  },
+  {
+    "char": "幽",
+    "yomi": "ゆう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p095_05.png",
+    "sheetId": "KAI_p095",
+    "note": ""
+  },
+  {
+    "char": "芳",
+    "yomi": "ほう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p096_01.png",
+    "sheetId": "KAI_p096",
+    "note": ""
+  },
+  {
+    "char": "艸",
+    "yomi": "そう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p096_02.png",
+    "sheetId": "KAI_p096",
+    "note": "草"
+  },
+  {
+    "char": "惹",
+    "yomi": "じゃく",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p096_03.png",
+    "sheetId": "KAI_p096",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p096_04.png",
+    "sheetId": "KAI_p096",
+    "note": ""
+  },
+  {
+    "char": "還",
+    "yomi": "かん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p096_05.png",
+    "sheetId": "KAI_p096",
+    "note": ""
+  },
+  {
+    "char": "雁",
+    "yomi": "がん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p097_01.png",
+    "sheetId": "KAI_p097",
+    "note": ""
+  },
+  {
+    "char": "唳",
+    "yomi": "れい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p097_02.png",
+    "sheetId": "KAI_p097",
+    "note": ""
+  },
+  {
+    "char": "風",
+    "yomi": "かぜ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p097_03.png",
+    "sheetId": "KAI_p097",
+    "note": ""
+  },
+  {
+    "char": "雲",
+    "yomi": "くも",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p097_04.png",
+    "sheetId": "KAI_p097",
+    "note": ""
+  },
+  {
+    "char": "髙",
+    "yomi": "たか",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p097_05.png",
+    "sheetId": "KAI_p097",
+    "note": "高"
+  },
+  {
+    "char": "黄",
+    "yomi": "き",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p098_01.png",
+    "sheetId": "KAI_p098",
+    "note": ""
+  },
+  {
+    "char": "鳥",
+    "yomi": "とり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p098_02.png",
+    "sheetId": "KAI_p098",
+    "note": ""
+  },
+  {
+    "char": "話",
+    "yomi": "はなし",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p098_03.png",
+    "sheetId": "KAI_p098",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p098_04.png",
+    "sheetId": "KAI_p098",
+    "note": ""
+  },
+  {
+    "char": "深",
+    "yomi": "しん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p098_05.png",
+    "sheetId": "KAI_p098",
+    "note": ""
+  },
+  {
+    "char": "花",
+    "yomi": "はな",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p099_01.png",
+    "sheetId": "KAI_p099",
+    "note": ""
+  },
+  {
+    "char": "柳",
+    "yomi": "やなぎ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p099_02.png",
+    "sheetId": "KAI_p099",
+    "note": ""
+  },
+  {
+    "char": "春",
+    "yomi": "はる",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p099_03.png",
+    "sheetId": "KAI_p099",
+    "note": ""
+  },
+  {
+    "char": "全",
+    "yomi": "ぜん",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p099_04.png",
+    "sheetId": "KAI_p099",
+    "note": ""
+  },
+  {
+    "char": "盛",
+    "yomi": "じょう",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p099_05.png",
+    "sheetId": "KAI_p099",
+    "note": ""
+  },
+  {
+    "char": "竹",
+    "yomi": "たけ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p100_01.png",
+    "sheetId": "KAI_p100",
+    "note": ""
+  },
+  {
+    "char": "外",
+    "yomi": "そと",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p100_02.png",
+    "sheetId": "KAI_p100",
+    "note": ""
+  },
+  {
+    "char": "茶",
+    "yomi": "ちゃ",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p100_03.png",
+    "sheetId": "KAI_p100",
+    "note": ""
+  },
+  {
+    "char": "烟",
+    "yomi": "けむり",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p100_04.png",
+    "sheetId": "KAI_p100",
+    "note": ""
+  },
+  {
+    "char": "静",
+    "yomi": "せい",
+    "style": "楷書",
+    "imagePath": "data/images/KAI_p100_05.png",
+    "sheetId": "KAI_p100",
     "note": ""
   }
 ];
