@@ -290,6 +290,62 @@
         width: min(calc((100svh - 290px) * 24.3 / 33.4), 98vw);
       }
     }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      .wrap {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .title,
+      .desc,
+      .tabs,
+      #searchPanel,
+      .tehon-controls,
+      .tehon-status,
+      .zoom-modal {
+        display: none !important;
+      }
+
+      #tehonPanel {
+        display: block !important;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        background: #fff;
+      }
+
+      .paper-wrap {
+        padding: 0;
+      }
+
+      .paper {
+        width: 170mm;
+        border: 1px solid #000;
+        background: #fff;
+      }
+
+      .glyph {
+        border: none;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .glyph img {
+        mix-blend-mode: normal;
+      }
+    }
   </style>
 </head>
 <body>
@@ -368,7 +424,7 @@
     <div id="zoomView" class="zoom-view"></div>
   </div>
 
-  <script src="./data/characters.js"></script>
+  <script src="./data/characters.js?v=20260310-500"></script>
   <script>
     const characters = Array.isArray(window.CHARACTERS) ? window.CHARACTERS : [];
 
