@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Extract 5 calligraphy character images per page from a PDF.
+Extract 4 or 5 calligraphy character images per page from a PDF.
 
 Methods:
-- slots: fixed 2x3 layout (5 cells used)
-- cluster: connected components + KMeans clustering (5 groups)
+- slots: fixed layout (4 or 5 cells)
+- cluster: connected components + KMeans clustering (4 or 5 groups)
 
 Both methods include noise filtering to suppress thin lines / memo scribbles.
 """
@@ -56,6 +56,25 @@ SLOTS_5 = [
     Slot("left_top", 0.00, 0.00, 0.50, 1.00 / 3.0),
     Slot("left_middle", 0.00, 1.00 / 3.0, 0.50, 1.00 / 3.0),
 ]
+
+SLOTS_4 = [
+    Slot("right_top", 0.50, 0.00, 0.50, 0.50),
+    Slot("right_bottom", 0.50, 0.50, 0.50, 0.50),
+    Slot("left_top", 0.00, 0.00, 0.50, 0.50),
+    Slot("left_bottom", 0.00, 0.50, 0.50, 0.50),
+]
+
+
+def get_slot_layout(char_count: int) -> list[Slot]:
+    if char_count == 4:
+        return SLOTS_4
+    return SLOTS_5
+
+
+def get_slot_names(char_count: int) -> list[str]:
+    if char_count == 4:
+        return ["right_top", "right_bottom", "left_top", "left_bottom"]
+    return ["right_top", "right_middle", "right_bottom", "left_top", "left_middle"]
 
 
 def parse_crop(crop_text: str) -> tuple[float, float, float, float]:
@@ -242,6 +261,7 @@ def apply_mask_gray(img: np.ndarray, mask: np.ndarray) -> np.ndarray:
 
 def extract_chars_by_slots(
     paper_img: np.ndarray,
+    slot_layout: list[Slot],
     pad_ratio: float,
     min_area_ratio: float,
     min_short_ratio: float,
@@ -251,7 +271,7 @@ def extract_chars_by_slots(
     adaptive_c: int,
 ) -> list[tuple[str, np.ndarray]]:
     out: list[tuple[str, np.ndarray]] = []
-    for slot in SLOTS_5:
+    for slot in slot_layout:
         x1, y1, x2, y2 = slot_to_pixels(paper_img, slot)
         slot_img = paper_img[y1:y2, x1:x2]
         char_img = tight_crop_with_components(
@@ -268,8 +288,12 @@ def extract_chars_by_slots(
     return out
 
 
-def _order_cluster_boxes(bboxes: list[tuple[int, int, int, int]]) -> list[tuple[int, int, int, int]] | None:
-    if len(bboxes) != 5:
+def _order_cluster_boxes(
+    bboxes: list[tuple[int, int, int, int]],
+    expected_right: int,
+    expected_left: int,
+) -> list[tuple[int, int, int, int]] | None:
+    if len(bboxes) != (expected_right + expected_left):
         return None
 
     centers = np.array([[(x1 + x2) / 2.0, (y1 + y2) / 2.0] for (x1, y1, x2, y2) in bboxes], dtype=np.float32)
@@ -293,21 +317,16 @@ def _order_cluster_boxes(bboxes: list[tuple[int, int, int, int]]) -> list[tuple[
     right.sort(key=lambda t: t[1])
     left.sort(key=lambda t: t[1])
 
-    if len(right) < 3 or len(left) < 2:
+    if len(right) < expected_right or len(left) < expected_left:
         return None
 
-    ordered = [
-        right[0][0],
-        right[1][0],
-        right[2][0],
-        left[0][0],
-        left[1][0],
-    ]
+    ordered = [x[0] for x in right[:expected_right]] + [x[0] for x in left[:expected_left]]
     return ordered
 
 
 def extract_chars_by_cluster(
     paper_img: np.ndarray,
+    char_count: int,
     pad_ratio: float,
     min_area_ratio: float,
     min_short_ratio: float,
@@ -318,15 +337,15 @@ def extract_chars_by_cluster(
 ) -> list[tuple[str, np.ndarray]] | None:
     binary = binarize_ink(paper_img, binarize_method, adaptive_block_size, adaptive_c)
     comps = extract_components(binary, min_area_ratio, min_short_ratio, max_line_aspect)
-    if len(comps) < 5:
+    if len(comps) < char_count:
         return None
 
     points = np.array([[c.cx, c.cy] for c in comps], dtype=np.float32)
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 80, 0.2)
-    _, labels, _ = cv2.kmeans(points, 5, None, criteria, 12, cv2.KMEANS_PP_CENTERS)
+    _, labels, _ = cv2.kmeans(points, char_count, None, criteria, 12, cv2.KMEANS_PP_CENTERS)
     labels = labels.reshape(-1)
 
-    grouped: list[list[Component]] = [[] for _ in range(5)]
+    grouped: list[list[Component]] = [[] for _ in range(char_count)]
     for i, c in enumerate(comps):
         grouped[int(labels[i])].append(c)
 
@@ -338,11 +357,12 @@ def extract_chars_by_cluster(
         bbox = pad_bbox(bbox, paper_img.shape[1], paper_img.shape[0], pad_ratio)
         char_boxes.append(bbox)
 
-    ordered = _order_cluster_boxes(char_boxes)
+    expected_right, expected_left = (2, 2) if char_count == 4 else (3, 2)
+    ordered = _order_cluster_boxes(char_boxes, expected_right=expected_right, expected_left=expected_left)
     if ordered is None:
         return None
 
-    names = ["right_top", "right_middle", "right_bottom", "left_top", "left_middle"]
+    names = get_slot_names(char_count)
     out: list[tuple[str, np.ndarray]] = []
     for i, (x1, y1, x2, y2) in enumerate(ordered):
         out.append((names[i], paper_img[y1:y2, x1:x2]))
@@ -353,6 +373,7 @@ def extract_chars_by_manual_boxes(
     page_img: np.ndarray,
     page_no: int,
     manual_boxes: dict[str, list[dict[str, float]]],
+    slot_names: list[str],
     pad_ratio: float,
     min_area_ratio: float,
     min_short_ratio: float,
@@ -363,14 +384,13 @@ def extract_chars_by_manual_boxes(
     keep_manual_box_exact: bool,
 ) -> list[tuple[str, np.ndarray]] | None:
     entries = manual_boxes.get(str(page_no))
-    if not entries or len(entries) < 5:
+    if not entries or len(entries) < len(slot_names):
         return None
 
     h, w = page_img.shape[:2]
     out: list[tuple[str, np.ndarray]] = []
-    names = ["right_top", "right_middle", "right_bottom", "left_top", "left_middle"]
 
-    for idx in range(5):
+    for idx, slot_name in enumerate(slot_names):
         e = entries[idx]
         if {"x_ratio", "y_ratio", "w_ratio", "h_ratio"} <= set(e.keys()):
             x = int(round(float(e["x_ratio"]) * w))
@@ -401,7 +421,7 @@ def extract_chars_by_manual_boxes(
                 adaptive_block_size=adaptive_block_size,
                 adaptive_c=adaptive_c,
             )
-        out.append((names[idx], char_img))
+        out.append((slot_name, char_img))
     return out
 
 
@@ -430,7 +450,7 @@ def iter_pages(doc: fitz.Document, page_spec: str) -> Iterable[int]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Extract 5 calligraphy chars per page from a PDF.")
+    parser = argparse.ArgumentParser(description="Extract 4 or 5 calligraphy chars per page from a PDF.")
     parser.add_argument("--pdf", required=True, help="Input PDF path")
     parser.add_argument("--out-dir", default="data/images", help="Output directory for char images")
     parser.add_argument("--csv", default="data/extracted_template.csv", help="Output CSV path")
@@ -451,6 +471,13 @@ def main() -> None:
         choices=["slots", "cluster"],
         default="cluster",
         help="Extraction method. cluster is more algorithmic, slots is deterministic fallback.",
+    )
+    parser.add_argument(
+        "--char-count",
+        type=int,
+        choices=[4, 5],
+        default=5,
+        help="Number of characters per page to extract (4 or 5).",
     )
     parser.add_argument(
         "--rotate",
@@ -524,6 +551,8 @@ def main() -> None:
     csv_path = Path(args.csv).expanduser().resolve()
     crop_ratio = parse_crop(args.crop)
     manual_boxes: dict[str, list[dict[str, float]]] | None = None
+    slot_layout = get_slot_layout(args.char_count)
+    slot_names = get_slot_names(args.char_count)
 
     if not pdf_path.exists():
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
@@ -558,6 +587,7 @@ def main() -> None:
                 page_img=page_img,
                 page_no=page_no,
                 manual_boxes=manual_boxes,
+                slot_names=slot_names,
                 pad_ratio=args.pad_ratio,
                 min_area_ratio=args.min_area_ratio,
                 min_short_ratio=args.min_short_ratio,
@@ -573,6 +603,7 @@ def main() -> None:
         if extracted is None and args.method == "cluster":
             extracted = extract_chars_by_cluster(
                 paper_img,
+                char_count=args.char_count,
                 pad_ratio=args.pad_ratio,
                 min_area_ratio=args.min_area_ratio,
                 min_short_ratio=args.min_short_ratio,
@@ -587,6 +618,7 @@ def main() -> None:
         if extracted is None:
             extracted = extract_chars_by_slots(
                 paper_img,
+                slot_layout=slot_layout,
                 pad_ratio=args.pad_ratio,
                 min_area_ratio=args.min_area_ratio,
                 min_short_ratio=args.min_short_ratio,
