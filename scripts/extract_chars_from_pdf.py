@@ -369,6 +369,96 @@ def extract_chars_by_cluster(
     return out
 
 
+def _smooth_1d(arr: np.ndarray, sigma: float) -> np.ndarray:
+    size = max(3, int(sigma * 4))
+    if size % 2 == 0:
+        size += 1
+    x = np.arange(-(size // 2), size // 2 + 1, dtype=np.float32)
+    kernel = np.exp(-(x ** 2) / (2.0 * sigma ** 2))
+    kernel /= kernel.sum()
+    return np.convolve(arr.astype(np.float32), kernel, mode="same")
+
+
+def _find_valley(arr: np.ndarray, lo: float, hi: float) -> int:
+    n = len(arr)
+    start = int(n * lo)
+    end = int(n * hi)
+    if start >= end:
+        return (start + end) // 2
+    return start + int(np.argmin(arr[start:end]))
+
+
+def extract_chars_by_projection(
+    paper_img: np.ndarray,
+    char_count: int,
+    pad_ratio: float,
+    min_area_ratio: float,
+    min_short_ratio: float,
+    max_line_aspect: float,
+    binarize_method: str,
+    adaptive_block_size: int,
+    adaptive_c: int,
+) -> list[tuple[str, np.ndarray]] | None:
+    """Segment characters using horizontal/vertical projection profiles.
+
+    Steps:
+    1. Binarize the page image.
+    2. Compute vertical projection (column-wise ink density) → find the
+       valley between the right and left character columns.
+    3. For each column region, compute horizontal projection (row-wise ink
+       density) → find the valley(s) between rows.
+    4. Tight-crop each detected cell.
+    """
+    binary = binarize_ink(paper_img, binarize_method, adaptive_block_size, adaptive_c)
+    h, w = paper_img.shape[:2]
+    sigma = max(5.0, w * 0.015)
+
+    # --- Step 1: find column boundary (right vs left) ---
+    v_proj = binary.sum(axis=0).astype(np.float32)
+    v_smooth = _smooth_1d(v_proj, sigma)
+    col_split = _find_valley(v_smooth, 0.30, 0.70)
+
+    # --- Step 2: find row boundaries within each column ---
+    right_nrows, left_nrows = (2, 2) if char_count == 4 else (3, 2)
+
+    def _row_splits(x1: int, x2: int, nrows: int) -> list[int]:
+        h_proj = binary[:, x1:x2].sum(axis=1).astype(np.float32)
+        h_smooth = _smooth_1d(h_proj, sigma)
+        step = 1.0 / nrows
+        splits: list[int] = []
+        for i in range(1, nrows):
+            center = i * step
+            splits.append(_find_valley(h_smooth, center - step * 0.4, center + step * 0.4))
+        return sorted(splits)
+
+    right_splits = _row_splits(col_split, w, right_nrows)
+    left_splits = _row_splits(0, col_split, left_nrows)
+
+    # --- Step 3: build crops and tight-crop each cell ---
+    def _crops(x1: int, x2: int, row_splits: list[int], nrows: int) -> list[tuple[int, int, int, int]]:
+        bounds = [0] + row_splits + [h]
+        return [(x1, bounds[i], x2, bounds[i + 1]) for i in range(nrows)]
+
+    all_crops = _crops(col_split, w, right_splits, right_nrows) + _crops(0, col_split, left_splits, left_nrows)
+    names = get_slot_names(char_count)
+
+    out: list[tuple[str, np.ndarray]] = []
+    for name, (x1, y1, x2, y2) in zip(names, all_crops):
+        region = paper_img[y1:y2, x1:x2]
+        char_img = tight_crop_with_components(
+            region,
+            pad_ratio=pad_ratio,
+            min_area_ratio=min_area_ratio,
+            min_short_ratio=min_short_ratio,
+            max_line_aspect=max_line_aspect,
+            binarize_method=binarize_method,
+            adaptive_block_size=adaptive_block_size,
+            adaptive_c=adaptive_c,
+        )
+        out.append((name, char_img))
+    return out
+
+
 def extract_chars_by_manual_boxes(
     page_img: np.ndarray,
     page_no: int,
@@ -468,9 +558,14 @@ def main() -> None:
     )
     parser.add_argument(
         "--method",
-        choices=["slots", "cluster"],
-        default="cluster",
-        help="Extraction method. cluster is more algorithmic, slots is deterministic fallback.",
+        choices=["slots", "cluster", "projection"],
+        default="projection",
+        help=(
+            "Extraction method. "
+            "projection: projection-profile segmentation (recommended). "
+            "cluster: KMeans on ink components. "
+            "slots: fixed grid fallback."
+        ),
     )
     parser.add_argument(
         "--char-count",
@@ -600,7 +695,22 @@ def main() -> None:
             if extracted is None:
                 print(f"[warn] page {page_no}: manual boxes not found, fallback to method={args.method}")
 
-        if extracted is None and args.method == "cluster":
+        if extracted is None and args.method == "projection":
+            extracted = extract_chars_by_projection(
+                paper_img,
+                char_count=args.char_count,
+                pad_ratio=args.pad_ratio,
+                min_area_ratio=args.min_area_ratio,
+                min_short_ratio=args.min_short_ratio,
+                max_line_aspect=args.max_line_aspect,
+                binarize_method=args.binarize_method,
+                adaptive_block_size=args.adaptive_block_size,
+                adaptive_c=args.adaptive_c,
+            )
+            if extracted is None:
+                print(f"[warn] page {page_no}: projection failed, fallback to cluster")
+
+        if extracted is None and args.method in ("projection", "cluster"):
             extracted = extract_chars_by_cluster(
                 paper_img,
                 char_count=args.char_count,
