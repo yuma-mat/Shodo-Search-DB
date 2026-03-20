@@ -2,3 +2,6 @@
 .venv/
 __pycache__/
 *.pyc
+
+# 手本 PDF（著作権保護のため非追跡）
+assets/
