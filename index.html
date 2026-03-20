@@ -584,6 +584,145 @@
       color: var(--accent);
     }
 
+    /* ─── グリフ（クリック可能） ─── */
+    .glyph[data-char] {
+      cursor: pointer;
+    }
+
+    .glyph[data-char]::after {
+      content: '↺';
+      position: absolute;
+      bottom: 4%;
+      right: 5%;
+      font-size: clamp(10px, 2vw, 14px);
+      color: var(--sub);
+      opacity: 0;
+      transition: opacity 0.18s;
+      pointer-events: none;
+    }
+
+    .glyph[data-char]:hover::after {
+      opacity: 0.7;
+    }
+
+    .glyph[data-char]:hover img,
+    .glyph[data-char]:hover .fallback-char {
+      opacity: 0.85;
+    }
+
+    /* ─── 画像選択ピッカー ─── */
+    .picker-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(16, 22, 44, 0.88);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .picker-modal[hidden] { display: none; }
+
+    .picker-dialog {
+      background: var(--panel);
+      border-radius: 20px;
+      width: min(96vw, 820px);
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.45);
+    }
+
+    .picker-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .picker-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+
+    .picker-close {
+      width: auto;
+      min-width: auto;
+      padding: 6px 14px;
+      background: transparent;
+      color: var(--sub);
+      border: 1.5px solid var(--line);
+      font-size: 13px;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .picker-close:hover {
+      background: var(--sakura-soft);
+      color: var(--ink);
+      transform: none;
+      box-shadow: none;
+    }
+
+    .picker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .picker-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 8px 10px;
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      width: auto;
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: 0.08em;
+      font-family: inherit;
+    }
+
+    .picker-item:hover {
+      border-color: var(--accent);
+      background: var(--sakura-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(43,66,120,0.14);
+      color: var(--ink);
+    }
+
+    .picker-item img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .picker-empty {
+      padding: 32px;
+      text-align: center;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    @media print {
+      .picker-modal { display: none !important; }
+    }
+
     /* ─── レスポンシブ ─── */
     @media (max-width: 640px) {
       .tehon-controls { grid-template-columns: 1fr 1fr; }
@@ -773,6 +912,16 @@
     </section>
   </main>
 
+  <div id="pickerModal" class="picker-modal" hidden>
+    <div class="picker-dialog">
+      <div class="picker-header">
+        <span id="pickerTitle" class="picker-title"></span>
+        <button id="pickerCloseBtn" class="picker-close">閉じる</button>
+      </div>
+      <div id="pickerGrid" class="picker-grid"></div>
+    </div>
+  </div>
+
   <div id="zoomModal" class="zoom-modal" hidden>
     <button id="zoomCloseBtn" class="zoom-close">閉じる</button>
     <div id="zoomView" class="zoom-view"></div>
@@ -952,6 +1101,7 @@
         const data = glyphMap.get(char);
         const glyph = document.createElement("div");
         glyph.className = "glyph";
+        glyph.dataset.char = char;
         glyph.style.left = `${box.x}%`;
         glyph.style.top = `${box.y}%`;
         glyph.style.width = `${box.w}%`;
@@ -1010,6 +1160,91 @@
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !zoomModal.hidden) closeZoom();
+    });
+
+    // ─── ピッカー ───
+    const pickerModal  = document.querySelector("#pickerModal");
+    const pickerTitle  = document.querySelector("#pickerTitle");
+    const pickerGrid   = document.querySelector("#pickerGrid");
+    const pickerCloseBtn = document.querySelector("#pickerCloseBtn");
+
+    const setGlyphContent = (glyphEl, row) => {
+      const char = glyphEl.dataset.char;
+      glyphEl.innerHTML = "";
+      if (row?.imagePath) {
+        const img = document.createElement("img");
+        img.src = row.imagePath;
+        img.alt = `${char}の手本画像`;
+        img.loading = "lazy";
+        glyphEl.append(img);
+      } else {
+        const fallback = document.createElement("div");
+        fallback.className = "fallback-char";
+        fallback.textContent = char;
+        glyphEl.append(fallback);
+      }
+    };
+
+    const openPicker = (glyphEl) => {
+      const char = glyphEl.dataset.char;
+      const options = characters.filter((r) => r.char === char);
+
+      pickerTitle.textContent = `「${char}」の手本を選択`;
+      pickerGrid.innerHTML = "";
+
+      if (options.length === 0) {
+        const msg = document.createElement("p");
+        msg.className = "picker-empty";
+        msg.textContent = "この文字の画像は登録されていません。";
+        pickerGrid.append(msg);
+      } else {
+        for (const row of options) {
+          const btn = document.createElement("button");
+          btn.className = "picker-item";
+          if (row.imagePath) {
+            const img = document.createElement("img");
+            img.src = row.imagePath;
+            img.alt = `${char} - ${row.style}`;
+            btn.append(img);
+          } else {
+            const text = document.createElement("span");
+            text.style.fontSize = "32px";
+            text.textContent = char;
+            btn.append(text);
+          }
+          const label = document.createElement("span");
+          label.textContent = [row.style, row.sheetId].filter(Boolean).join(" · ");
+          btn.append(label);
+          btn.addEventListener("click", () => {
+            setGlyphContent(glyphEl, row);
+            closePicker();
+          });
+          pickerGrid.append(btn);
+        }
+      }
+
+      pickerModal.hidden = false;
+      document.body.style.overflow = "hidden";
+    };
+
+    const closePicker = () => {
+      pickerModal.hidden = true;
+      pickerGrid.innerHTML = "";
+      document.body.style.overflow = "";
+    };
+
+    pickerCloseBtn.addEventListener("click", closePicker);
+    pickerModal.addEventListener("click", (e) => {
+      if (e.target === pickerModal) closePicker();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !pickerModal.hidden) closePicker();
+    });
+
+    // 半紙上のグリフをクリックでピッカーを開く（イベント委任）
+    paper.addEventListener("click", (e) => {
+      const glyph = e.target.closest(".glyph[data-char]");
+      if (glyph) openPicker(glyph);
     });
 
     tehonBtn.addEventListener("click", renderTehon);
