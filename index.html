@@ -6,219 +6,506 @@
   <title>桜住庵</title>
   <style>
     :root {
-      --bg: #fdeff5;
-      --panel: #fff8fc;
+      --bg: #faf1f6;
+      --panel: #fffcfd;
       --ink: #1d2d55;
-      --sub: #5f6f99;
+      --sub: #7484b0;
       --accent: #2B4278;
-      --line: #e6c9d8;
-      --sakura: #f7c8d8;
-      --sakura-soft: #fff1f7;
+      --line: #e8cedd;
+      --sakura: #f0b3c8;
+      --sakura-soft: #fdeef5;
+      --sakura-deep: #d4728f;
+      --sakura-pale: #fff5f9;
+      --petal: #f9d8e6;
     }
-    * { box-sizing: border-box; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      margin: 0;
-      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "游明朝", "HiraMinProN-W3", serif;
       color: var(--ink);
-      background: linear-gradient(160deg, var(--sakura-soft), var(--bg));
+      background: var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
+
+    /* 上部アクセントライン */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--accent) 0%,
+        var(--sakura-deep) 35%,
+        var(--sakura) 65%,
+        var(--petal) 100%);
+      z-index: 200;
+    }
+
+    /* 背景の光彩 */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 15%, rgba(240,179,200,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 85% 85%, rgba(43,66,120,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 30% at 70% 5%,  rgba(249,216,230,0.22) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 桜の花びら背景装飾 */
+    .sakura-petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(ellipse 60% 80% at 40% 35%, #fde8f1, #f4b8cc);
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+
+    .petal:nth-child(1)  { left:  7%; animation-duration: 12s; animation-delay:  0s; width: 10px; height: 10px; }
+    .petal:nth-child(2)  { left: 18%; animation-duration: 15s; animation-delay: -4s; width: 16px; height: 16px; }
+    .petal:nth-child(3)  { left: 33%; animation-duration: 10s; animation-delay: -2s; width: 12px; height: 12px; }
+    .petal:nth-child(4)  { left: 47%; animation-duration: 18s; animation-delay: -8s; }
+    .petal:nth-child(5)  { left: 62%; animation-duration: 13s; animation-delay: -1s; width: 18px; height: 18px; }
+    .petal:nth-child(6)  { left: 74%; animation-duration: 16s; animation-delay: -6s; width: 11px; height: 11px; }
+    .petal:nth-child(7)  { left: 85%; animation-duration: 11s; animation-delay: -3s; }
+    .petal:nth-child(8)  { left: 94%; animation-duration: 14s; animation-delay: -9s; width: 9px;  height: 9px; }
+
+    @keyframes fall {
+      0%   { transform: translateY(-40px) rotate(0deg)  translateX(0);   opacity: 0; }
+      5%   { opacity: 0.7; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(60px); opacity: 0; }
+    }
+
+    /* ─── レイアウト ─── */
     .wrap {
       max-width: 1240px;
-      margin: 24px auto;
-      padding: 0 16px 24px;
+      margin: 0 auto;
+      padding: 40px 24px 52px;
+      position: relative;
+      z-index: 1;
     }
+
+    /* ─── ヘッダー ─── */
+    .header-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .header-area::after {
+      content: '❀';
+      position: absolute;
+      right: 4px;
+      top: -4px;
+      font-size: 52px;
+      color: var(--sakura);
+      opacity: 0.45;
+      animation: sway 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-6deg) scale(1);    }
+      50%       { transform: rotate( 6deg) scale(1.06); }
+    }
+
+    /* 左の朱線 */
+    .title-wrap {
+      position: relative;
+      padding-left: 22px;
+    }
+
+    .title-wrap::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8%;
+      height: 84%;
+      width: 4px;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, var(--sakura-deep), var(--sakura));
+    }
+
     .title {
-      margin: 0 0 6px;
-      font-size: clamp(44px, 6vw, 64px);
-      letter-spacing: 0.02em;
+      font-size: clamp(48px, 7vw, 82px);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      color: var(--ink);
+      display: inline-block;
     }
+
+    /* 「桜」の字だけ桜色 */
+    .title::first-letter {
+      color: var(--sakura-deep);
+    }
+
+    .title-en {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: var(--sub);
+      margin-top: 10px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
     .desc {
-      margin: 0 0 18px;
+      margin-top: 10px;
+      padding-left: 22px;
       color: var(--sub);
       font-size: 14px;
+      letter-spacing: 0.05em;
     }
+
+    /* 区切り線 */
+    .header-rule {
+      margin: 20px 0 0;
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, var(--line), transparent);
+    }
+
+    /* ─── タブ ─── */
     .tabs {
       display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .tab-btn {
+      gap: 4px;
+      margin-bottom: 20px;
+      background: var(--sakura-pale);
       border: 1px solid var(--line);
-      background: #fff;
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 15px;
-      cursor: pointer;
+      border-radius: 14px;
+      padding: 5px;
+      width: fit-content;
+      box-shadow: 0 2px 8px rgba(29,45,85,0.05);
     }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--sub);
+      border-radius: 10px;
+      padding: 10px 26px;
+      font-size: 15px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      letter-spacing: 0.06em;
+      width: auto;
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: rgba(240,179,200,0.28);
+      color: var(--ink);
+    }
+
     .tab-btn.active {
       background: var(--accent);
-      border-color: var(--accent);
       color: #fff;
       font-weight: 700;
+      box-shadow: 0 4px 14px rgba(43,66,120,0.28);
     }
+
+    /* ─── パネル ─── */
     .panel {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 10px 28px rgba(31, 27, 23, 0.06);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow:
+        0 2px 4px  rgba(29,45,85,0.03),
+        0 16px 40px rgba(29,45,85,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+      position: relative;
+      overflow: hidden;
     }
+
+    /* パネル右上の淡いグラデーション装飾 */
+    .panel::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,216,230,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
     .tab-panel[hidden] { display: none; }
+
+    /* ─── フィルター ─── */
     .filters {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 16px;
+      margin-bottom: 16px;
     }
+
     .actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
+
     label {
-      font-size: 13px;
+      font-size: 11.5px;
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
       color: var(--sub);
+      letter-spacing: 0.14em;
     }
-    input, select, button {
+
+    input, select {
       width: 100%;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--line);
+      padding: 11px 14px;
       font-size: 16px;
       font-family: inherit;
       background: #fff;
       color: var(--ink);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
     }
+
+    input:focus, select:focus {
+      border-color: var(--sakura);
+      box-shadow: 0 0 0 3px rgba(240,179,200,0.28);
+    }
+
     button {
       cursor: pointer;
       border: none;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      font-weight: 700;
       background: var(--accent);
       color: #fff;
-      font-weight: 700;
+      letter-spacing: 0.08em;
+      transition: all 0.2s ease;
+      width: 100%;
     }
+
+    button:hover {
+      background: #1a2e5c;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(43,66,120,0.28);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
     .clear {
-      background: #e5a8c0;
-      color: var(--accent);
+      background: rgba(212,114,143,0.1);
+      color: var(--sakura-deep);
+      border: 1.5px solid rgba(212,114,143,0.28);
     }
+
+    .clear:hover {
+      background: rgba(212,114,143,0.18);
+      color: var(--sakura-deep);
+      box-shadow: 0 6px 16px rgba(212,114,143,0.16);
+    }
+
+    /* ─── カウント ─── */
     .count {
-      font-size: 14px;
-      margin: 10px 0;
+      font-size: 13px;
+      margin: 12px 0;
       color: var(--sub);
+      letter-spacing: 0.04em;
     }
+
+    /* ─── テーブル ─── */
     .table-wrap {
       width: 100%;
       overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 8px rgba(29,45,85,0.04);
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       background: #fff;
-      border-radius: 10px;
       table-layout: auto;
     }
+
     th, td {
       border-bottom: 1px solid var(--line);
-      padding: 10px 10px;
+      padding: 12px 14px;
       text-align: left;
       vertical-align: middle;
       font-size: 15px;
       overflow-wrap: anywhere;
     }
+
     th {
-      background: #fbe7ef;
-      font-size: 13px;
+      background: linear-gradient(to bottom, #fdf2f7, #f9e5ef);
+      font-size: 11.5px;
       color: var(--sub);
+      letter-spacing: 0.14em;
+      font-weight: 600;
     }
+
     tr:last-child td { border-bottom: none; }
-    td.char {
-      font-size: 42px;
+
+    tbody tr {
+      transition: background 0.14s ease;
     }
+
+    tbody tr:hover {
+      background: #fffafc;
+    }
+
+    td.char {
+      font-size: 40px;
+      line-height: 1;
+    }
+
     .char-image {
-      width: 96px;
-      height: 96px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: 8px;
       background: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+      margin: auto;
     }
-    .image-col {
-      text-align: center;
-      padding-left: 10px;
-      padding-right: 10px;
+
+    .char-image:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 20px rgba(29,45,85,0.13);
     }
-    .image-cell {
-      text-align: center;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .char-col,
-    .char-cell,
-    .style-col,
-    .style-cell,
-    .id-col,
-    .id-cell {
-      text-align: center;
-    }
-    .zoom-col {
-      text-align: center;
-    }
-    .zoom-cell {
-      text-align: center;
-    }
+
+    .image-col  { text-align: center; }
+    .image-cell { text-align: center; padding: 10px; }
+    .char-col, .char-cell,
+    .style-col, .style-cell,
+    .id-col, .id-cell,
+    .zoom-col, .zoom-cell { text-align: center; }
+
     .zoom-btn {
       width: auto;
-      min-width: 86px;
-      padding: 8px 10px;
-      font-size: 14px;
+      min-width: 76px;
+      padding: 7px 14px;
+      font-size: 13px;
       border-radius: 8px;
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid rgba(43,66,120,0.5);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      box-shadow: none;
+    }
+
+    .zoom-btn:hover {
       background: var(--accent);
       color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(43,66,120,0.22);
     }
+
     .img-missing {
       color: var(--sub);
       font-size: 13px;
     }
+
     .empty {
       margin: 8px 0 0;
       color: var(--sub);
       font-size: 14px;
+      text-align: center;
+      padding: 24px;
     }
 
+    /* ─── 手本パネル ─── */
     .tehon-controls {
       display: grid;
-      grid-template-columns: 1fr 160px;
-      gap: 10px;
-      margin-bottom: 12px;
+      grid-template-columns: 1fr 140px 110px;
+      gap: 12px;
+      margin-bottom: 14px;
       align-items: end;
     }
+
+    .print-btn {
+      background: transparent;
+      color: var(--sub);
+      border: 1.5px solid var(--line);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .print-btn:hover {
+      background: var(--sakura-soft);
+      color: var(--ink);
+      border-color: var(--sakura);
+      box-shadow: none;
+      transform: none;
+    }
+
+    @media print {
+      .print-btn { display: none !important; }
+    }
+
     .tehon-help {
       margin: 0 0 12px;
       color: var(--sub);
       font-size: 13px;
     }
+
     .tehon-status {
-      margin: 0 0 10px;
+      margin: 0 0 14px;
       color: var(--sub);
-      font-size: 14px;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      padding: 9px 14px;
+      background: var(--sakura-soft);
+      border-radius: 10px;
+      border-left: 3px solid var(--sakura);
     }
+
     .paper-wrap {
       display: flex;
       justify-content: center;
-      padding: 8px 0;
+      padding: 12px 0;
     }
+
     .paper {
       position: relative;
       width: min(calc((100svh - 230px) * 24.3 / 33.4), 96vw);
       aspect-ratio: 24.3 / 33.4;
-      border: 2px solid #caa0b8;
-      border-radius: 0;
-      background: #ffffff;
+      border: 1.5px solid #c8a8bc;
+      background: #fefcfd;
       overflow: hidden;
+      box-shadow:
+        4px 4px 0 rgba(200,168,188,0.28),
+        0 24px 64px rgba(29,45,85,0.13);
     }
+
     .glyph {
       position: absolute;
       padding: 2.5%;
@@ -226,132 +513,198 @@
       align-items: center;
       justify-content: center;
     }
+
     .glyph img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       mix-blend-mode: multiply;
     }
+
     .glyph .fallback-char {
       font-size: clamp(28px, 9vw, 58px);
       color: var(--accent);
     }
+
+    /* ─── 拡大モーダル ─── */
     .zoom-modal {
       position: fixed;
       inset: 0;
       z-index: 50;
-      background: rgba(43, 66, 120, 0.84);
+      background: rgba(16,22,44,0.90);
+      backdrop-filter: blur(10px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
       padding: 16px;
     }
-    .zoom-modal[hidden] {
-      display: none;
-    }
+
+    .zoom-modal[hidden] { display: none; }
+
     .zoom-close {
       width: auto;
       min-width: 120px;
-      background: var(--sakura-soft);
-      color: var(--accent);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.28);
+      letter-spacing: 0.1em;
     }
+
+    .zoom-close:hover {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      transform: none;
+    }
+
     .zoom-view {
       width: min(96vw, 1100px);
       height: min(88vh, 1600px);
       background: #ffffff;
-      border: 2px solid #d7b1c4;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
     }
+
     .zoom-view img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       mix-blend-mode: multiply;
     }
+
     .zoom-char {
       font-size: min(72vw, 72vh);
       line-height: 1;
       color: var(--accent);
     }
 
+    /* ─── レスポンシブ ─── */
     @media (max-width: 640px) {
-      .tehon-controls {
-        grid-template-columns: 1fr;
-      }
-      .actions {
-        grid-template-columns: 1fr;
-      }
-      .paper {
-        width: min(calc((100svh - 290px) * 24.3 / 33.4), 98vw);
-      }
+      .tehon-controls { grid-template-columns: 1fr 1fr; }
+      .tehon-controls > div { grid-column: 1 / -1; }
+      .actions        { grid-template-columns: 1fr; }
+      .paper          { width: min(calc((100svh - 290px) * 24.3 / 33.4), 98vw); }
+      .wrap           { padding: 28px 16px 36px; }
+      .panel          { padding: 20px 16px; }
+      .header-area::after { display: none; }
     }
 
+    /* ─── 印刷 ─── */
     @media print {
+      /* A4 縦、上だけ余裕をもたせて他は最小 */
       @page {
         size: A4 portrait;
-        margin: 10mm;
+        margin: 10mm 4mm 4mm; /* 上 10mm / 左右 4mm / 下 4mm */
       }
 
+      /* 印刷色をそのまま出力 */
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      /* 装飾・背景をすべて消す */
       body {
         background: #fff;
-        color: #000;
+        margin: 0;
+        padding: 0;
       }
+      body::before, body::after { display: none !important; }
+      .sakura-petals { display: none !important; }
 
+      /* ラッパーをリセット */
       .wrap {
         max-width: none;
         margin: 0;
         padding: 0;
       }
 
-      .title,
-      .desc,
+      /* 手本以外をすべて非表示 */
+      .header-area,
+      .header-rule,
       .tabs,
       #searchPanel,
       .tehon-controls,
       .tehon-status,
-      .zoom-modal {
-        display: none !important;
-      }
+      .zoom-modal { display: none !important; }
 
+      /* 手本パネルを強制表示・装飾なし */
       #tehonPanel {
         display: block !important;
         border: none;
         box-shadow: none;
         padding: 0;
-        background: #fff;
+        background: transparent;
       }
+      #tehonPanel::after { display: none; }
 
+      /* 半紙をページいっぱいに */
       .paper-wrap {
         padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
       }
 
       .paper {
-        width: 170mm;
+        /*
+         * A4(210mm) - 左右余白(4mm×2) = 202mm が使える幅。
+         * 半紙比率 24.3:33.4 で width=202mm → height≈277mm（余白後285mm以内）
+         */
+        width: 202mm;
+        height: auto;
+        aspect-ratio: 24.3 / 33.4;
         border: none;
         background: transparent;
+        box-shadow: none;
       }
 
+      /* 文字セルの余白（上が切れないよう少し確保） */
       .glyph {
         border: none;
-        padding: 0;
+        padding: 2.5%;
         overflow: hidden;
       }
 
       .glyph img {
         mix-blend-mode: normal;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .glyph .fallback-char {
+        font-size: clamp(32px, 14vw, 80px);
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- 桜の花びら装飾（aria-hidden） -->
+  <div class="sakura-petals" aria-hidden="true">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+
   <main class="wrap">
-    <h1 class="title">桜住庵</h1>
-    <p class="desc">文字の検索と手本レイアウト作成ができます。</p>
+    <div class="header-area">
+      <div class="title-wrap">
+        <h1 class="title">桜住庵</h1>
+        <span class="title-en">Ōjūan · Calligraphy Archive</span>
+      </div>
+      <p class="desc">文字の検索と手本レイアウト作成ができます。</p>
+      <hr class="header-rule">
+    </div>
 
     <div class="tabs" role="tablist" aria-label="機能タブ">
       <button id="tabSearch" class="tab-btn active" role="tab" aria-selected="true" aria-controls="searchPanel">文字検索</button>
@@ -411,6 +764,7 @@
           <input id="tehonInput" type="text" maxlength="12" placeholder="文字を入力">
         </div>
         <button id="tehonBtn">配置する</button>
+        <button id="printBtn" class="print-btn">印刷</button>
       </div>
       <p id="tehonStatus" class="tehon-status">文字を入力して「配置する」を押してください。</p>
       <div class="paper-wrap">
@@ -659,6 +1013,7 @@
     });
 
     tehonBtn.addEventListener("click", renderTehon);
+    document.querySelector("#printBtn").addEventListener("click", () => window.print());
     tehonInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") renderTehon();
     });
